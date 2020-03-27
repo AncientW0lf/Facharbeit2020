@@ -2,6 +2,17 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <LangVersion>latest</LangVersion>
   </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Data.OleDb" Version="4.7.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="BoxLib">
+      <HintPath>..\..\..\..\..\..\..\source\repos\BoxLib\BoxLib\bin\Release\netstandard2.0\BoxLib.dll</HintPath>
+    </Reference>
+  </ItemGroup>
 
 </Project>
