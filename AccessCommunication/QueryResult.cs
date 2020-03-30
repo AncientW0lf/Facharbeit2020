@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data.OleDb;
 
 namespace AccessCommunication
@@ -11,7 +12,7 @@ namespace AccessCommunication
 
         public int RecordsAffected { get; internal set; }
 
-        public object[,] ReturnedRows { get; internal set; }
+        public List<object[]> ReturnedRows { get; internal set; }
 
         public QueryResult(string query, OleDbDataReader dataReader)
         {
@@ -22,15 +23,18 @@ namespace AccessCommunication
 
             if(dataReader.HasRows)
             {
-                ReturnedRows = new object[dataReader.FieldCount,dataReader.RecordsAffected];
+                ReturnedRows = new List<object[]>();
 
                 int rowCounter = 0;
                 while(dataReader.Read())
                 {
+                    ReturnedRows.Add(new object[dataReader.FieldCount]);
                     for(int i = 0; i < dataReader.FieldCount; i++)
                     {
-                        ReturnedRows[i, rowCounter] = dataReader[i];
+                        ReturnedRows[rowCounter][i] = dataReader[i];
                     }
+
+                    rowCounter++;
                 }
             }
             else

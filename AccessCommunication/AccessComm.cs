@@ -51,7 +51,7 @@ namespace AccessCommunication
 
 		public object Select(string table, string field)
 		{
-			return ExecuteQuery($"SELECT TOP 1 {field} from {table}").ReturnedRows[0, 0];
+			return ExecuteQuery($"SELECT TOP 1 {field} from {table}").ReturnedRows[0];
 		}
 
 		/// <inheritdoc />

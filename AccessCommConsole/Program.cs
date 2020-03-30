@@ -8,8 +8,16 @@ namespace AccessCommConsole
 	{
 		private static void Main(string[] args)
 		{
-			Console.WriteLine("- Microsoft Access Communication Console -");
-			Console.WriteLine();
+			Console.WriteLine(
+@"  __  __ _                     __ _       _                                            
+ |  \/  (_)__ _ _ ___ ___ ___ / _| |_    /_\  __ __ ___ ______                         
+ | |\/| | / _| '_/ _ (_-</ _ \  _|  _|  / _ \/ _/ _/ -_|_-<_-<                         
+ |_|__|_|_\__|_| \___/__/\___/_|_ \__| /_/_\_\__\__\___/__/__/_                  _     
+  / __|___ _ __  _ __ _  _ _ _ (_)__ __ _| |_(_)___ _ _    / __|___ _ _  ___ ___| |___ 
+ | (__/ _ \ '  \| '  \ || | ' \| / _/ _` |  _| / _ \ ' \  | (__/ _ \ ' \(_-</ _ \ / -_)
+  \___\___/_|_|_|_|_|_\_,_|_||_|_\__\__,_|\__|_\___/_||_|  \___\___/_||_/__/\___/_\___|
+                                                                                       ");
+			Console.WriteLine("Please enter a command:");
 
 			string input = null;
 			AccessComm comm = null;
@@ -132,6 +140,15 @@ namespace AccessCommConsole
 				}
 				Console.WriteLine($"Query executed. Status: {(res.Success ? "Success" : "Failed")}\n" +
 				                  $"Records affected: {res.RecordsAffected}");
+
+				if(res.ReturnedRows?.Count <= 0 || res.ReturnedRows == null) return;
+
+				Console.WriteLine();
+				Console.WriteLine("Query returned data:");
+				for(int y = 0; y < res.ReturnedRows.Count; y++)
+				{
+						Console.WriteLine(string.Join(", ", res.ReturnedRows[y]));
+				}
 			}
 		}
 	}
