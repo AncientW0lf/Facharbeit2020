@@ -5,6 +5,8 @@ namespace AccessCommunication
 {
     public struct QueryResult
     {
+        public bool Success { get; internal set; }
+
         public string ExecutedQuery { get; internal set; }
 
         public int RecordsAffected { get; internal set; }
@@ -35,6 +37,8 @@ namespace AccessCommunication
             {
                 ReturnedRows = null;
             }
+
+            Success = true;
         }
     }
 }

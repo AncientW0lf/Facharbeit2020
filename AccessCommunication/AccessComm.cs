@@ -8,37 +8,41 @@ namespace AccessCommunication
     {
         public static QueryResult ExecuteQuery(string filepath, SecureString password, string query)
         {
-            string pass = null;
-            password.Handle(s => pass = s);
+            var res = new QueryResult();
 
-            // Create and open the connection in a using block. This
-            // ensures that all resources will be closed and disposed
-            // when the code exits.
-            using var connection = new OleDbConnection(
-                "Provider=Microsoft.ACE.OLEDB.12.0;" +
-                $"Data Source={filepath};" +
-                "Persist Security Info=False;" +
-                $"Jet OLEDB:Database Password={pass};");
+            password.Handle(pass =>
+            {
+                // Create and open the connection in a using block. This
+                // ensures that all resources will be closed and disposed
+                // when the code exits.
+                using var connection = new OleDbConnection(
+                    "Provider=Microsoft.ACE.OLEDB.12.0;" +
+                    $"Data Source={filepath};" +
+                    "Persist Security Info=False;" +
+                    $"Jet OLEDB:Database Password={pass};");
 			
-            // Create the Command object.
-            using var command = new OleDbCommand(query, connection);
+                // Create the Command object.
+                using var command = new OleDbCommand(query, connection);
 
-            // Open the connection in a try/catch block. 
-            // Create and execute the DataReader, writing the result
-            // set to the console window.
-            OleDbDataReader reader = null;
-            try
-            {
-                connection.Open();
-                reader = command.ExecuteReader();
+                // Open the connection in a try/catch block. 
+                // Create and execute the DataReader, writing the result
+                // set to the console window.
+                OleDbDataReader reader = null;
+                try
+                {
+                    connection.Open();
+                    reader = command.ExecuteReader();
 
-                return new QueryResult(query, reader);
-            }
-            finally
-            {
-                reader?.Close();
-                command.Dispose();
-            }
+                    res = new QueryResult(query, reader);
+                }
+                finally
+                {
+                    reader?.Close();
+                    command.Dispose();
+                }
+            });
+
+            return res;
         }
     }
 }
