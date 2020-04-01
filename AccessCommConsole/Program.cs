@@ -6,7 +6,14 @@ namespace AccessCommConsole
 {
 	internal class Program
 	{
+		private static Program _instance;
+
 		private static void Main(string[] args)
+		{
+			_instance = new Program();
+		}
+
+		private Program()
 		{
 			Console.WriteLine(
 @"  __  __ _                     __ _       _                                            
@@ -47,12 +54,12 @@ namespace AccessCommConsole
 			}
 		}
 
-		private static void ShowHelp()
+		private void ShowHelp()
 		{
 			Console.WriteLine("COMMANDS: help, open, close, query");
 		}
 
-		private static void OpenDB(ref AccessComm communicator)
+		private void OpenDB(ref AccessComm communicator)
 		{
 			if(communicator?.IsDisposed == false)
 			{
@@ -105,7 +112,7 @@ namespace AccessCommConsole
 			Console.WriteLine("Opened database.");
 		}
 
-		private static void CloseDB(ref AccessComm communicator)
+		private void CloseDB(ref AccessComm communicator)
 		{
 			if(communicator?.IsDisposed == false)
 			{
@@ -118,7 +125,7 @@ namespace AccessCommConsole
 			}
 		}
 
-		private static void QueryDB(ref AccessComm communicator)
+		private void QueryDB(ref AccessComm communicator)
 		{
 			if(communicator?.IsDisposed == null || communicator?.IsDisposed == true)
 			{
