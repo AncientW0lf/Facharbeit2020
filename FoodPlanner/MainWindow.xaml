@@ -4,10 +4,11 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FoodPlanner"
+        xmlns:lang="clr-namespace:Languages;assembly=Languages"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <TabControl>
-        <TabItem Header="Welcome">
+        <TabItem Header="{x:Static lang:Resources.WelcomeSimple}">
             <Frame Source="Pages/WelcomePage.xaml" NavigationUIVisibility="Hidden" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         </TabItem>
     </TabControl>

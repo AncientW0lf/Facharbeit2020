@@ -10,7 +10,7 @@ namespace FoodPlanner
 	{
 		private void App_OnStartup(object sender, StartupEventArgs e)
 		{
-			LanguageHelper.Resources = typeof(Resources);
+			LanguageHelper.Resources = typeof(Languages.Resources);
 		}
 	}
 }
