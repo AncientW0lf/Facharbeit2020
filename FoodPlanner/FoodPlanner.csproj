@@ -17,7 +17,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="BoxLib" Version="1.0.0" />
+    <PackageReference Include="BoxLib" Version="1.1.0" />
   </ItemGroup>
 
   <ItemGroup>

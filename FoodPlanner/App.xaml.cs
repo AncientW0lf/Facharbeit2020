@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics;
+using System.Globalization;
 using System.Windows;
 using System.Windows.Threading;
 using BoxLib.Scripts;
@@ -13,6 +14,8 @@ namespace FoodPlanner
 		private void App_OnStartup(object sender, StartupEventArgs e)
 		{
 			LanguageHelper.Resources = typeof(Languages.Resources);
+			LanguageHelper.ChangeLanguage(CultureInfo.InstalledUICulture);
+			Log.Write($"Selected language: {CultureInfo.InstalledUICulture}", 1, TraceEventType.Information);
 		}
 
 		private void App_OnExit(object sender, ExitEventArgs e)
