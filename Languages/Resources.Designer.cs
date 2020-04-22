@@ -61,6 +61,15 @@ namespace Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Ingredients.
+        /// </summary>
+        public static string IngredientsSimple {
+            get {
+                return ResourceManager.GetString("IngredientsSimple", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Welcome.
         /// </summary>
         public static string WelcomeSimple {

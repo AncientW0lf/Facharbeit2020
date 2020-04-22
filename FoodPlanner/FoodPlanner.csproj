@@ -24,4 +24,8 @@
     <ProjectReference Include="..\Languages\Languages.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="AdditionalWindows\" />
+  </ItemGroup>
+
 </Project>
