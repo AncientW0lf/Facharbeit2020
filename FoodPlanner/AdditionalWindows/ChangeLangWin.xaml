@@ -1,0 +1,20 @@
+﻿<Window x:Class="FoodPlanner.AdditionalWindows.ChangeLangWin"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FoodPlanner.AdditionalWindows"
+        mc:Ignorable="d"
+        Title="Change language" ResizeMode="NoResize" SizeToContent="WidthAndHeight" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Image Name="FlagImg" Source="../Resources/Flags/united-states.png" Width="128" Margin="10,-10"/>
+        <ComboBox Name="LangBox" Grid.Row="1" SelectedIndex="0" Margin="5"/>
+        <Button Grid.Row="2" Content="🡆"/>
+    </Grid>
+</Window>
