@@ -17,11 +17,27 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\Flags\france.png" />
+    <None Remove="Resources\Flags\germany.png" />
+    <None Remove="Resources\Flags\spain.png" />
+    <None Remove="Resources\Flags\united-states.png" />
+    <None Remove="Resources\Flags\unknown.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="BoxLib" Version="1.4.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Languages\Languages.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\Flags\france.png" />
+    <Resource Include="Resources\Flags\germany.png" />
+    <Resource Include="Resources\Flags\spain.png" />
+    <Resource Include="Resources\Flags\united-states.png" />
+    <Resource Include="Resources\Flags\unknown.png" />
   </ItemGroup>
 
 </Project>
