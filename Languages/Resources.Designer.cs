@@ -61,6 +61,15 @@ namespace Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Change language.
+        /// </summary>
+        public static string ChangeLangSimple {
+            get {
+                return ResourceManager.GetString("ChangeLangSimple", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Ingredients.
         /// </summary>
         public static string IngredientsSimple {
@@ -115,16 +124,7 @@ namespace Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ?.
-        /// </summary>
-        public static string WelcomeText2Post {
-            get {
-                return ResourceManager.GetString("WelcomeText2Post", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Want to get started right away? Why not.
+        ///   Looks up a localized string similar to Want to get started right away? Why not .
         /// </summary>
         public static string WelcomeText2Pre {
             get {

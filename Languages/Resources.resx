@@ -134,15 +134,14 @@
     <comment>Text displayed on the welcome page.</comment>
   </data>
   <data name="WelcomeText2Pre" xml:space="preserve">
-    <value>Want to get started right away? Why not</value>
+    <value>Want to get started right away? Why not </value>
     <comment>Text displayed on the welcome page.</comment>
   </data>
   <data name="WelcomeText2Btn" xml:space="preserve">
     <value>create a recipe</value>
     <comment>Text displayed on the welcome page.</comment>
   </data>
-  <data name="WelcomeText2Post" xml:space="preserve">
-    <value>?</value>
-    <comment>Text displayed on the welcome page.</comment>
+  <data name="ChangeLangSimple" xml:space="preserve">
+    <value>Change language</value>
   </data>
 </root>

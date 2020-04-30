@@ -134,12 +134,12 @@
     <comment>Welcome to your personal food planner! Here, you can store all your precious recipes, create a week plan to know what's for dinner and generate a shopping list to know what to buy for the week.</comment>
   </data>
   <data name="WelcomeText2Pre" xml:space="preserve">
-    <value>Möchtest du direkt loslegen? Dann fange doch damit an</value>
+    <value>Möchtest du direkt loslegen? Warum fängst du nicht damit an </value>
   </data>
   <data name="WelcomeText2Btn" xml:space="preserve">
     <value>ein Rezept zu erstellen</value>
   </data>
-  <data name="WelcomeText2Post" xml:space="preserve">
-    <value>!</value>
+  <data name="ChangeLangSimple" xml:space="preserve">
+    <value>Sprache ändern</value>
   </data>
 </root>
