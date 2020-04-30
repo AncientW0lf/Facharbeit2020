@@ -123,4 +123,23 @@
   <data name="IngredientsSimple" xml:space="preserve">
     <value>Zutaten</value>
   </data>
+  <data name="RecipesSimple" xml:space="preserve">
+    <value>Rezepte</value>
+  </data>
+  <data name="OptionsSimple" xml:space="preserve">
+    <value>Optionen</value>
+  </data>
+  <data name="WelcomeText1" xml:space="preserve">
+    <value>Willkommen zu deinem ganz persönlichen Essensplaner! Hier kannst du all deine wertvollen Rezepte speichern, einen Wochenplan erstellen um stets zu wissen was es zum Abendessen gibt und dir für den Wochenplan eine Einkaufsliste generieren lassen damit du weißt welche Zutaten du für die kommende Woche kaufen musst.</value>
+    <comment>Welcome to your personal food planner! Here, you can store all your precious recipes, create a week plan to know what's for dinner and generate a shopping list to know what to buy for the week.</comment>
+  </data>
+  <data name="WelcomeText2Pre" xml:space="preserve">
+    <value>Möchtest du direkt loslegen? Dann fange doch damit an</value>
+  </data>
+  <data name="WelcomeText2Btn" xml:space="preserve">
+    <value>ein Rezept zu erstellen</value>
+  </data>
+  <data name="WelcomeText2Post" xml:space="preserve">
+    <value>!</value>
+  </data>
 </root>

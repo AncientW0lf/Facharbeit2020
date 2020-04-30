@@ -123,4 +123,26 @@
   <data name="IngredientsSimple" xml:space="preserve">
     <value>Ingredients</value>
   </data>
+  <data name="RecipesSimple" xml:space="preserve">
+    <value>Recipes</value>
+  </data>
+  <data name="OptionsSimple" xml:space="preserve">
+    <value>Options</value>
+  </data>
+  <data name="WelcomeText1" xml:space="preserve">
+    <value>Welcome to your personal food planner! Here, you can store all your precious recipes, create a week plan to know what's for dinner and generate a shopping list based on your week plan to know what to buy for the week.</value>
+    <comment>Text displayed on the welcome page.</comment>
+  </data>
+  <data name="WelcomeText2Pre" xml:space="preserve">
+    <value>Want to get started right away? Why not</value>
+    <comment>Text displayed on the welcome page.</comment>
+  </data>
+  <data name="WelcomeText2Btn" xml:space="preserve">
+    <value>create a recipe</value>
+    <comment>Text displayed on the welcome page.</comment>
+  </data>
+  <data name="WelcomeText2Post" xml:space="preserve">
+    <value>?</value>
+    <comment>Text displayed on the welcome page.</comment>
+  </data>
 </root>

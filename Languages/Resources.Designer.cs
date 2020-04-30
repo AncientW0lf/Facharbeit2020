@@ -70,11 +70,65 @@ namespace Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Options.
+        /// </summary>
+        public static string OptionsSimple {
+            get {
+                return ResourceManager.GetString("OptionsSimple", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Recipes.
+        /// </summary>
+        public static string RecipesSimple {
+            get {
+                return ResourceManager.GetString("RecipesSimple", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Welcome.
         /// </summary>
         public static string WelcomeSimple {
             get {
                 return ResourceManager.GetString("WelcomeSimple", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Welcome to your personal food planner! Here, you can store all your precious recipes, create a week plan to know what&apos;s for dinner and generate a shopping list based on your week plan to know what to buy for the week..
+        /// </summary>
+        public static string WelcomeText1 {
+            get {
+                return ResourceManager.GetString("WelcomeText1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to create a recipe.
+        /// </summary>
+        public static string WelcomeText2Btn {
+            get {
+                return ResourceManager.GetString("WelcomeText2Btn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ?.
+        /// </summary>
+        public static string WelcomeText2Post {
+            get {
+                return ResourceManager.GetString("WelcomeText2Post", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Want to get started right away? Why not.
+        /// </summary>
+        public static string WelcomeText2Pre {
+            get {
+                return ResourceManager.GetString("WelcomeText2Pre", resourceCulture);
             }
         }
     }
