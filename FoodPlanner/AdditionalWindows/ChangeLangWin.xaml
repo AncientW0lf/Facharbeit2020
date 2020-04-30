@@ -14,7 +14,7 @@
         </Grid.RowDefinitions>
 
         <Image Name="FlagImg" Source="../Resources/Flags/united-states.png" Width="128" Margin="10,-10"/>
-        <ComboBox Name="LangBox" Grid.Row="1" SelectedIndex="0" Margin="5"/>
-        <Button Grid.Row="2" Content="🡆"/>
+        <ComboBox Name="LangBox" Grid.Row="1" SelectedIndex="0" Margin="5" SelectionChanged="ChangeFlag"/>
+        <Button Grid.Row="2" Content="🡆" Click="Button_Click"/>
     </Grid>
 </Window>
