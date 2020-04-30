@@ -4,19 +4,14 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:FoodPlanner.Pages"
+      xmlns:lang="clr-namespace:Languages;assembly=Languages"
       mc:Ignorable="d"
-      Title="WelcomePage"
       d:DesignWidth="768"
       d:DesignHeight="432">
     <StackPanel>
-        <TextBlock TextWrapping="Wrap">
-            Welcome to your personal food planner! 
-            Here, you can store all your precious recipes, create a week 
-            plan to know what's for dinner and generate a shopping list 
-            to know what to buy for the week.
-        </TextBlock>
+        <TextBlock TextWrapping="Wrap" Text="{x:Static lang:Resources.WelcomeText1}"/>
         <StackPanel Orientation="Horizontal" Margin="0,10">
-            <TextBlock Text="Want to get started right away? Why not "/><Button VerticalAlignment="Center" Content="create a recipe"/><TextBlock Text="?"/>
+            <TextBlock Text="{x:Static lang:Resources.WelcomeText2Pre}"/><Button VerticalAlignment="Center" Content="{x:Static lang:Resources.WelcomeText2Btn}"/><TextBlock Text="?"/>
         </StackPanel>
     </StackPanel>
 </Page>
