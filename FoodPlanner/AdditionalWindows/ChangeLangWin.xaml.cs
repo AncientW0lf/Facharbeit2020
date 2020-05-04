@@ -22,7 +22,7 @@ namespace FoodPlanner.AdditionalWindows
 		/// <summary>
 		/// Initializes a new window and retrieves all supported languages.
 		/// </summary>
-		public ChangeLangWin(IReadOnlyList<CultureInfo> languages)
+		public ChangeLangWin(IList<CultureInfo> languages)
 		{
 			InitializeComponent();
 
@@ -55,10 +55,7 @@ namespace FoodPlanner.AdditionalWindows
 		{
 			var selectedItem = e.AddedItems[0] as CultureInfo;
 
-			if(selectedItem.Equals(CultureInfo.GetCultureInfo("en-us")))
-				FlagImg.Source = new BitmapImage(new Uri(@"Resources\Flags\united-states.png"));
-			else if(selectedItem.Equals(CultureInfo.GetCultureInfo("de-de")))
-				FlagImg.Source = new BitmapImage(new Uri(@"Resources\Flags\germany.png"));
+			FlagImg.Source = new BitmapImage(selectedItem.GetFlagLocation());
 		}
 	}
 }
