@@ -1,5 +1,4 @@
 ﻿using BoxLib.Scripts;
-using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Windows;
@@ -51,6 +50,9 @@ namespace FoodPlanner.AdditionalWindows
 			Close();
 		}
 
+		/// <summary>
+		/// Changes the flag every time the selection is changed to reflect the chosen language.
+		/// </summary>
 		private void ChangeFlag(object sender, SelectionChangedEventArgs e)
 		{
 			var selectedItem = e.AddedItems[0] as CultureInfo;

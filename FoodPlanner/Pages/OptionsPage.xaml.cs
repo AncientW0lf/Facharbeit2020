@@ -1,17 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using FoodPlanner.AdditionalWindows;
 using System.Globalization;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using FoodPlanner.AdditionalWindows;
 
 namespace FoodPlanner.Pages
 {
@@ -20,11 +11,17 @@ namespace FoodPlanner.Pages
 	/// </summary>
 	public partial class OptionsPage : Page
 	{
+		/// <summary>
+		/// Initializes the page.
+		/// </summary>
 		public OptionsPage()
 		{
 			InitializeComponent();
 		}
 
+		/// <summary>
+		/// Refreshes the image displayed in the change language button to reflect the current language.
+		/// </summary>
 		private void RefreshFlagImage(object sender, RoutedEventArgs e)
 		{
 			CultureInfo currLang = Languages.Resources.Culture;
@@ -32,15 +29,22 @@ namespace FoodPlanner.Pages
 			ImgLangFlagBtn.Source = new BitmapImage(currLang.GetFlagLocation());
 		}
 
+		/// <summary>
+		/// Opens a new window to change the current language.
+		/// </summary>
 		private void ChangeLanguage(object sender, RoutedEventArgs e)
 		{
+			//Opens the window
 			var win = new ChangeLangWin(App.LangHelper.GetSupportedLanguages()) {Owner = Application.Current.MainWindow};
 			bool? finished = win.ShowDialog();
 
+			//Returns if the user cancelled the dialog
 			if(finished != true) return;
 
+			//Changes the language
 			App.LangHelper.ChangeLanguage(win.SelectedCulture);
 
+			//Refreshes the current page to show the new language
 			NavigationService?.Refresh();
 
 			MessageBox.Show(Languages.Resources.MsgChangedLang,

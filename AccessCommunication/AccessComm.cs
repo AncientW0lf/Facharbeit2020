@@ -5,12 +5,26 @@ using System.Security;
 
 namespace AccessCommunication
 {
+	/// <summary>
+	/// This communicator opens a Microsoft Access database and can execute queries in it to manipulate or fetch data.
+	/// </summary>
 	public class AccessComm : IDisposable
 	{
+		/// <summary>
+		/// Checks if this object has been disposed.
+		/// </summary>
 		public bool IsDisposed { get; private set; }
 
+		/// <summary>
+		/// The connection object to the database.
+		/// </summary>
 		private OleDbConnection _connection;
 
+		/// <summary>
+		/// Initializes a new <see cref="AccessComm"/> and opens the specified database.
+		/// </summary>
+		/// <param name="dbPath">The full path to the database to open.</param>
+		/// <param name="password">The optional password to open the database.</param>
 		public AccessComm(string dbPath, SecureString password)
 		{
 			password.Handle(pass => _connection = new OleDbConnection(
@@ -22,16 +36,20 @@ namespace AccessCommunication
 			_connection.Open();
 		}
 
+		/// <summary>
+		/// Executes a query inside the database and returns a <see cref="QueryResult"/> object.
+		/// </summary>
+		/// <param name="query">The full query to execute.</param>
+		/// <returns>Detailed info about the executed query.</returns>
 		public QueryResult ExecuteQuery(string query)
 		{
+			//Throws an exception if the object is already disposed
 			if(IsDisposed) throw new InvalidOperationException("Connection is closed.");
 
-			// Create the Command object.
+			//Creates the command object which holds the query
 			using var command = new OleDbCommand(query, _connection);
 
-			// Open the connection in a try/catch block. 
-			// Create and execute the DataReader, writing the result
-			// set to the console window.
+			//Tries to execute the query and save its info
 			OleDbDataReader reader = null;
 			QueryResult res;
 			try
@@ -42,6 +60,7 @@ namespace AccessCommunication
 			}
 			finally
 			{
+				//Disposes the used objects
 				reader?.Close();
 				command.Dispose();
 			}

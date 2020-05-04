@@ -12,8 +12,14 @@ namespace FoodPlanner
 	/// </summary>
 	public partial class App : Application
 	{
+		/// <summary>
+		/// The helper class to access methods to manipulate and get resource languages.
+		/// </summary>
 		public static LanguageHelper LangHelper;
 
+		/// <summary>
+		/// Creates a new <see cref="LangHelper"/> and logs the selected language.
+		/// </summary>
 		private void App_OnStartup(object sender, StartupEventArgs e)
 		{
 			LangHelper = new LanguageHelper(typeof(Languages.Resources), CultureInfo.GetCultureInfo("en-us"));
@@ -24,11 +30,17 @@ namespace FoodPlanner
 			Log.Write($"Supported: {isSupported}", 2, null);
 		}
 
+		/// <summary>
+		/// Closes the log file.
+		/// </summary>
 		private void App_OnExit(object sender, ExitEventArgs e)
 		{
 			Log.Close();
 		}
 
+		/// <summary>
+		/// Handler for unhandled exceptions. Should not replace normal try..catch commands.
+		/// </summary>
 		private void App_OnDispatcherUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)
 		{
 			Log.Write("Unhandled exception!", 1, TraceEventType.Critical, true);
