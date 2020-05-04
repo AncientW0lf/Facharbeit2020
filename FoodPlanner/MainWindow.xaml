@@ -6,7 +6,9 @@
         xmlns:local="clr-namespace:FoodPlanner"
         xmlns:lang="clr-namespace:Languages;assembly=Languages"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="FoodPlanner" 
+        Height="450" 
+        Width="800">
     <TabControl>
         <TabItem Header="{x:Static lang:Resources.WelcomeSimple}">
             <Frame Background="#eee" Padding="5" Source="Pages/WelcomePage.xaml" NavigationUIVisibility="Hidden"/>
