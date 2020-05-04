@@ -66,7 +66,10 @@ namespace AccessCommConsole
 					case "query":
 						QueryDB(ref comm);
 						break;
-					//TODO: Add default case to notify user of invalid command
+
+					default:
+						Console.WriteLine($"\"{input}\" is not a valid command. Please enter \"help\" for a list of commands.");
+						break;
 				}
 			}
 		}
