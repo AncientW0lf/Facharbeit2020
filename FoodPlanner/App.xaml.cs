@@ -12,13 +12,13 @@ namespace FoodPlanner
 	/// </summary>
 	public partial class App : Application
 	{
-		private LanguageHelper _langHelper;
+		public static LanguageHelper LangHelper;
 
 		private void App_OnStartup(object sender, StartupEventArgs e)
 		{
-			_langHelper = new LanguageHelper(typeof(Languages.Resources));
-			_langHelper.ChangeLanguage(CultureInfo.InstalledUICulture);
-			bool isSupported = _langHelper.GetSupportedLanguages()
+			LangHelper = new LanguageHelper(typeof(Languages.Resources), CultureInfo.GetCultureInfo("en-us"));
+			LangHelper.ChangeLanguage(CultureInfo.InstalledUICulture);
+			bool isSupported = LangHelper.GetSupportedLanguages()
 				.FirstOrDefault(a => a.Equals(CultureInfo.InstalledUICulture)) != null;
 			Log.Write($"Selected language: {CultureInfo.InstalledUICulture}", 1, TraceEventType.Information, true);
 			Log.Write($"Supported: {isSupported}", 2, null);
