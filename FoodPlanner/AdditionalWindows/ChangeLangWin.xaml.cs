@@ -22,7 +22,7 @@ namespace FoodPlanner.AdditionalWindows
 		/// <summary>
 		/// Initializes a new window and retrieves all supported languages.
 		/// </summary>
-		public ChangeLangWin(IList<CultureInfo> languages)
+		public ChangeLangWin(IReadOnlyList<CultureInfo> languages)
 		{
 			InitializeComponent();
 
