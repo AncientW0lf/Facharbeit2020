@@ -79,6 +79,15 @@ namespace Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Changed language. Please restart the application for the changes to take effect..
+        /// </summary>
+        public static string MsgChangedLang {
+            get {
+                return ResourceManager.GetString("MsgChangedLang", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Options.
         /// </summary>
         public static string OptionsSimple {
@@ -93,6 +102,15 @@ namespace Languages {
         public static string RecipesSimple {
             get {
                 return ResourceManager.GetString("RecipesSimple", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Success.
+        /// </summary>
+        public static string SuccessSimple {
+            get {
+                return ResourceManager.GetString("SuccessSimple", resourceCulture);
             }
         }
         

@@ -142,4 +142,10 @@
   <data name="ChangeLangSimple" xml:space="preserve">
     <value>Sprache ändern</value>
   </data>
+  <data name="MsgChangedLang" xml:space="preserve">
+    <value>Sprache geändert. Bitte starte diese Applikation neu damit die Änderungen wirksam werden.</value>
+  </data>
+  <data name="SuccessSimple" xml:space="preserve">
+    <value>Erfolg</value>
+  </data>
 </root>
