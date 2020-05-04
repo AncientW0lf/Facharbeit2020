@@ -146,6 +146,7 @@
   </data>
   <data name="MsgChangedLang" xml:space="preserve">
     <value>Changed language. Please restart the application for the changes to take effect.</value>
+    <comment>Displayed after changing the language via button.</comment>
   </data>
   <data name="SuccessSimple" xml:space="preserve">
     <value>Success</value>
