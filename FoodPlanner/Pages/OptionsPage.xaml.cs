@@ -1,8 +1,10 @@
-﻿using FoodPlanner.AdditionalWindows;
+﻿using System.Diagnostics;
+using FoodPlanner.AdditionalWindows;
 using System.Globalization;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
+using BoxLib.Scripts;
 
 namespace FoodPlanner.Pages
 {
@@ -43,6 +45,8 @@ namespace FoodPlanner.Pages
 
 			//Changes the language
 			App.LangHelper.ChangeLanguage(win.SelectedCulture);
+
+			Log.Write($"Changed language to {Languages.Resources.Culture}.", 1, TraceEventType.Information);
 
 			//Refreshes the current page to show the new language
 			NavigationService?.Refresh();
