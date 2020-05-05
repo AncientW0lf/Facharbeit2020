@@ -36,10 +36,12 @@ namespace FoodPlanner
 				//Ignore
 			}
 
-			LangHelper.ChangeLanguage(savedLang ?? CultureInfo.InstalledUICulture);
+			savedLang ??= CultureInfo.InstalledUICulture;
+
+			LangHelper.ChangeLanguage(savedLang);
 			bool isSupported = LangHelper.GetSupportedLanguages()
-				.FirstOrDefault(a => a.Equals(CultureInfo.InstalledUICulture)) != null;
-			Log.Write($"Selected language: {CultureInfo.InstalledUICulture}", 1, TraceEventType.Information, true);
+				.FirstOrDefault(a => a.Equals(savedLang)) != null;
+			Log.Write($"Selected language: {savedLang}", 1, TraceEventType.Information, true);
 			Log.Write($"Supported: {isSupported}", 2, null);
 		}
 
