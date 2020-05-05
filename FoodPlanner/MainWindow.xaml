@@ -17,7 +17,7 @@
             <!--<Frame Background="#eee" Padding="5" Source="Pages/IngredsPage.xaml" NavigationUIVisibility="Hidden"/>-->
         </TabItem>
         <TabItem Header="{x:Static lang:Resources.RecipesSimple}">
-            <!--<Frame Background="#eee" Padding="5" Source="Pages/RecipesPage.xaml" NavigationUIVisibility="Hidden"/>-->
+            <Frame Background="#eee" Padding="5" Source="Pages/RecipesPage.xaml" NavigationUIVisibility="Hidden"/>
         </TabItem>
         <TabItem Header="{x:Static lang:Resources.OptionsSimple}">
             <Frame Background="#eee" Padding="5" Source="Pages/OptionsPage.xaml" NavigationUIVisibility="Hidden"/>
