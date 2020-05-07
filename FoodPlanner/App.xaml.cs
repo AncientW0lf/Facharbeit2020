@@ -75,6 +75,7 @@ namespace FoodPlanner
 		private void App_OnExit(object sender, ExitEventArgs e)
 		{
 			SaveLanguageToFile(Languages.Resources.Culture);
+			AccessDB.Dispose();
 			Log.Close();
 		}
 
