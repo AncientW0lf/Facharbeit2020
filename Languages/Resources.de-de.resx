@@ -148,4 +148,10 @@
   <data name="SuccessSimple" xml:space="preserve">
     <value>Erfolg</value>
   </data>
+  <data name="ErrorSimple" xml:space="preserve">
+    <value>Fehler</value>
+  </data>
+  <data name="MsgDBNotFound" xml:space="preserve">
+    <value>Die verbundene Datenbank konnte nicht gefunden werden! Manche Funktionen könnten nicht funktionieren oder sogar zum Programmabsturz führen.</value>
+  </data>
 </root>

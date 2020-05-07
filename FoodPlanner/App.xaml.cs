@@ -1,11 +1,13 @@
-﻿using System;
+﻿using AccessCommunication;
+using BoxLib.Scripts;
+using System;
 using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Security;
 using System.Windows;
 using System.Windows.Threading;
-using BoxLib.Scripts;
 
 namespace FoodPlanner
 {
@@ -18,6 +20,10 @@ namespace FoodPlanner
 		/// The helper class to access methods to manipulate and get resource languages.
 		/// </summary>
 		public static LanguageHelper LangHelper;
+
+		public static AccessComm AccessDB;
+
+		public const string DBPassword = "Ywc^r72*qX45ndtK";
 
 		/// <summary>
 		/// Creates a new <see cref="LangHelper"/> and logs the selected language.
@@ -43,6 +49,24 @@ namespace FoodPlanner
 				.FirstOrDefault(a => a.Equals(savedLang)) != null;
 			Log.Write($"Selected language: {savedLang}", 1, TraceEventType.Information, true);
 			Log.Write($"Supported: {isSupported}", 2, null);
+
+			try
+			{
+				var secure = new SecureString();
+				for(int i = 0; i < DBPassword.Length; i++)
+				{
+					secure.AppendChar(DBPassword[i]);
+				}
+
+				AccessDB = new AccessComm("database.accdb", secure);
+			}
+			catch(FileNotFoundException exc)
+			{
+				Log.Write("Could not find database!", 1, TraceEventType.Error, true);
+				Log.Write($"Exception: {exc}", 2, null);
+				MessageBox.Show(Languages.Resources.MsgDBNotFound, Languages.Resources.ErrorSimple,
+					MessageBoxButton.OK, MessageBoxImage.Error);
+			}
 		}
 
 		/// <summary>

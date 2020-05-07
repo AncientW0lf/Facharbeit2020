@@ -70,6 +70,15 @@ namespace Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Error.
+        /// </summary>
+        public static string ErrorSimple {
+            get {
+                return ResourceManager.GetString("ErrorSimple", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Ingredients.
         /// </summary>
         public static string IngredientsSimple {
@@ -84,6 +93,15 @@ namespace Languages {
         public static string MsgChangedLang {
             get {
                 return ResourceManager.GetString("MsgChangedLang", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Could not find connected database! Some functionality may not work or crash the application..
+        /// </summary>
+        public static string MsgDBNotFound {
+            get {
+                return ResourceManager.GetString("MsgDBNotFound", resourceCulture);
             }
         }
         
