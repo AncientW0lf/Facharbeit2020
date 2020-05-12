@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.OleDb;
+using System.Data.Common;
 
 namespace AccessCommunication
 {
@@ -29,12 +29,14 @@ namespace AccessCommunication
         /// </summary>
         public List<object[]> ReturnedRows { get; internal set; }
 
+        public string[] ColumnNames { get; internal set; }
+
         /// <summary>
         /// Fetches the data associated with the query.
         /// </summary>
         /// <param name="query">The query that was executed.</param>
         /// <param name="dataReader">The result reader that was returned by a database command.</param>
-        public QueryResult(string query, OleDbDataReader dataReader)
+        public QueryResult(string query, DbDataReader dataReader)
         {
             //Throws an exception if the reader is already closed
             if(dataReader.IsClosed) throw new ArgumentException("Data reader is closed!");
@@ -42,6 +44,8 @@ namespace AccessCommunication
             //Saves the data
             ExecutedQuery = query;
             RecordsAffected = dataReader.RecordsAffected;
+            
+            ColumnNames = null;
 
             //Fetches the data that was returned by the query
             if(dataReader.HasRows)
@@ -51,6 +55,22 @@ namespace AccessCommunication
                 int rowCounter = 0;
                 while(dataReader.Read())
                 {
+                    var columns = new List<string>();
+                    int counter = 0;
+                    while(true)
+                    {
+	                    try
+	                    {
+                            columns.Add(dataReader.GetName(counter++));
+	                    }
+	                    catch(IndexOutOfRangeException)
+	                    {
+		                    break;
+	                    }
+                    }
+
+                    ColumnNames = columns.ToArray();
+
                     ReturnedRows.Add(new object[dataReader.FieldCount]);
                     for(int i = 0; i < dataReader.FieldCount; i++)
                     {

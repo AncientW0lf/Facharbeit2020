@@ -190,7 +190,7 @@ namespace AccessCommConsole
 			var res = new QueryResult();
 			try
 			{
-				res = communicator.ExecuteQuery(query);
+				res = communicator.ExecuteQuery(query).GetAwaiter().GetResult();
 			}
 			catch(Exception e)
 			{
@@ -207,6 +207,7 @@ namespace AccessCommConsole
 			//Displays the returned data
 			Console.WriteLine();
 			Console.WriteLine("Query returned data:");
+			Console.WriteLine(string.Join(", ", res.ColumnNames));
 			for(int y = 0; y < res.ReturnedRows.Count; y++)
 			{
 				Console.WriteLine(string.Join(", ", res.ReturnedRows[y]));
