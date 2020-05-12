@@ -20,7 +20,7 @@
         </Grid.ColumnDefinitions>
 
         <TextBlock Text="Here is a list of all recipes that you have made thus far:" Grid.ColumnSpan="2"/>
-        <ListBox Grid.Row="1" Margin="0,5" Grid.ColumnSpan="2">
+        <ListBox Name="ListRecipes" Grid.Row="1" Margin="0,5" Grid.ColumnSpan="2">
             <ListBoxItem>
                 <TextBlock Text="adfdagad"/>
             </ListBoxItem>
@@ -47,9 +47,9 @@
             </Grid.RowDefinitions>
 
             <TextBlock Text="Recipe Name" Margin="0,0,0,2"/>
-            <TextBox IsReadOnly="True" Margin="0,0,0,5" Grid.Row="1"/>
-            <TextBlock Text="Recipe Description" Margin="0,0,0,2" Grid.Row="2"/>
-            <TextBox IsReadOnly="True" TextWrapping="Wrap" Grid.Row="3"/>
+            <TextBox Name="TxtBoxRecipeName" IsReadOnly="True" Margin="0,0,0,5" Grid.Row="1"/>
+            <TextBlock Text="Recipe Preparation" Margin="0,0,0,2" Grid.Row="2"/>
+            <TextBox Name="TxtBoxRecipeDesc" IsReadOnly="True" TextWrapping="Wrap" Grid.Row="3" VerticalScrollBarVisibility="Auto"/>
         </Grid>
 
         <Grid Grid.Row="2" Grid.Column="1" Margin="2,5">
@@ -59,7 +59,7 @@
             </Grid.RowDefinitions>
 
             <TextBlock Text="Ingredients" Margin="0,0,0,2"/>
-            <ListBox Grid.Row="1">
+            <ListBox Name="ListIngreds" Grid.Row="1">
                 <ListBoxItem>
                     <TextBlock Text="sdhsfjdfj"/>
                 </ListBoxItem>
