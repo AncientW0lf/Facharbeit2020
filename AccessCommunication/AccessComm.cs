@@ -1,8 +1,10 @@
 ﻿using BoxLib.Scripts;
 using System;
+using System.Data.Common;
 using System.Data.OleDb;
 using System.IO;
 using System.Security;
+using System.Threading.Tasks;
 
 namespace AccessCommunication
 {
@@ -47,7 +49,7 @@ namespace AccessCommunication
 		/// </summary>
 		/// <param name="query">The full query to execute.</param>
 		/// <returns>Detailed info about the executed query.</returns>
-		public QueryResult ExecuteQuery(string query)
+		public async Task<QueryResult> ExecuteQuery(string query)
 		{
 			//Throws an exception if the object is already disposed
 			if(IsDisposed) throw new InvalidOperationException("Connection is closed.");
@@ -56,11 +58,11 @@ namespace AccessCommunication
 			using var command = new OleDbCommand(query, _connection);
 
 			//Tries to execute the query and save its info
-			OleDbDataReader reader = null;
+			DbDataReader reader = null;
 			QueryResult res;
 			try
 			{
-				reader = command.ExecuteReader();
+				reader = await command.ExecuteReaderAsync();
 
 				res = new QueryResult(query, reader);
 			}
