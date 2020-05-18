@@ -42,4 +42,10 @@
     <Resource Include="Resources\Flags\unknown.png" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="database.accdb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
