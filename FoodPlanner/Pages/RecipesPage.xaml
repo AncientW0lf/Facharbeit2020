@@ -13,6 +13,7 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition/>
             <RowDefinition Height="2*"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -45,5 +46,8 @@
             <TextBlock Text="Ingredients" Margin="0,0,0,2"/>
             <ListBox Name="ListIngreds" Grid.Row="1"/>
         </Grid>
+
+        <Button Grid.Row="3" Content="Create a new recipe"/>
+        <Button Grid.Row="3" Grid.Column="1" Content="Edit selected recipe"/>
     </Grid>
 </Page>
