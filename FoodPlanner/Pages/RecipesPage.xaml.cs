@@ -1,7 +1,10 @@
-﻿using System.Linq;
+﻿using System.Diagnostics;
+using System.Linq;
 using System.Threading.Tasks;
+using System.Windows;
 using AccessCommunication;
 using System.Windows.Controls;
+using BoxLib.Scripts;
 
 namespace FoodPlanner.Pages
 {
@@ -25,8 +28,13 @@ namespace FoodPlanner.Pages
 			{
 				_recipes = await App.AccessDB.ExecuteQuery(
 					"select ID, Gerichtname, Zubereitung from Rezepte");
+				Log.Write("Executed SQL query:", 1, TraceEventType.Information, true);
+				Log.Write($"Query: {_recipes.ExecutedQuery}\nSuccess: {_recipes.Success}", 2, null);
+
 				_ingredients = await App.AccessDB.ExecuteQuery(
 					"select Rezepte_ID, Gerichtname, Zutat, Menge, Notiz from ZusammenfassungRezeptzutatenliste");
+				Log.Write("Executed SQL query:", 1, TraceEventType.Information, true);
+				Log.Write($"Query: {_ingredients.ExecutedQuery}\nSuccess: {_ingredients.Success}", 2, null);
 
 				await Dispatcher.InvokeAsync(() =>
 				{
@@ -61,6 +69,16 @@ namespace FoodPlanner.Pages
 				if(!string.IsNullOrWhiteSpace(selectedIngreds[i][4].ToString()))
 					((ListBoxItem)ListIngreds.Items[^1]).ToolTip = selectedIngreds[i][4];
 			}
+		}
+
+		private void OpenNewRecipeWin(object sender, RoutedEventArgs e)
+		{
+			throw new System.NotImplementedException();
+		}
+
+		private void OpenEditRecipeWin(object sender, RoutedEventArgs e)
+		{
+			throw new System.NotImplementedException();
 		}
 	}
 }

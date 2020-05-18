@@ -47,7 +47,7 @@
             <ListBox Name="ListIngreds" Grid.Row="1"/>
         </Grid>
 
-        <Button Grid.Row="3" Content="Create a new recipe"/>
-        <Button Grid.Row="3" Grid.Column="1" Content="Edit selected recipe"/>
+        <Button Grid.Row="3" Content="Create a new recipe" Click="OpenNewRecipeWin"/>
+        <Button Grid.Row="3" Grid.Column="1" Content="Edit selected recipe" Click="OpenEditRecipeWin"/>
     </Grid>
 </Page>
