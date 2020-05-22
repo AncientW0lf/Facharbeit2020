@@ -181,4 +181,13 @@
   <data name="NewRecipeSimple" xml:space="preserve">
     <value>New Recipe</value>
   </data>
+  <data name="NameSimple" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="AmountSimple" xml:space="preserve">
+    <value>Amount</value>
+  </data>
+  <data name="NoteSimple" xml:space="preserve">
+    <value>Note</value>
+  </data>
 </root>

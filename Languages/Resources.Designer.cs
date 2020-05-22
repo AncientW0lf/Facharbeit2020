@@ -61,6 +61,15 @@ namespace Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Amount.
+        /// </summary>
+        public static string AmountSimple {
+            get {
+                return ResourceManager.GetString("AmountSimple", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Change language.
         /// </summary>
         public static string ChangeLangSimple {
@@ -106,11 +115,29 @@ namespace Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Name.
+        /// </summary>
+        public static string NameSimple {
+            get {
+                return ResourceManager.GetString("NameSimple", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to New Recipe.
         /// </summary>
         public static string NewRecipeSimple {
             get {
                 return ResourceManager.GetString("NewRecipeSimple", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Note.
+        /// </summary>
+        public static string NoteSimple {
+            get {
+                return ResourceManager.GetString("NoteSimple", resourceCulture);
             }
         }
         
