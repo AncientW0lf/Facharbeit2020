@@ -32,6 +32,8 @@ namespace FoodPlanner.AdditionalWindows
 			_allIngredsString = new ObservableCollection<string>(_allIngreds.ReturnedRows
 				.Select(a => a[1].ToString())
 				.OrderBy(b => b));
+
+			UpdateIngredientsToBeAddedList(null, null);
 		}
 
 		private void ConfirmRecipe(object sender, RoutedEventArgs e)
