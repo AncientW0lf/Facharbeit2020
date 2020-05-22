@@ -190,4 +190,16 @@
   <data name="NoteSimple" xml:space="preserve">
     <value>Note</value>
   </data>
+  <data name="LinkedIngreds" xml:space="preserve">
+    <value>Linked Ingredients:</value>
+    <comment>Used when creating a new recipe.</comment>
+  </data>
+  <data name="AddIngredSimple" xml:space="preserve">
+    <value>Add ingredient</value>
+    <comment>Used when creating a new recipe.</comment>
+  </data>
+  <data name="SaveRecipeSimple" xml:space="preserve">
+    <value>Save recipe</value>
+    <comment>Used when creating a new recipe.</comment>
+  </data>
 </root>

@@ -181,4 +181,13 @@
   <data name="NoteSimple" xml:space="preserve">
     <value>Notiz</value>
   </data>
+  <data name="LinkedIngreds" xml:space="preserve">
+    <value>Verknüpfte Zutaten:</value>
+  </data>
+  <data name="AddIngredSimple" xml:space="preserve">
+    <value>Zutat hinzufügen</value>
+  </data>
+  <data name="SaveRecipeSimple" xml:space="preserve">
+    <value>Rezept speichern</value>
+  </data>
 </root>

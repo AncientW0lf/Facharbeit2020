@@ -61,6 +61,15 @@ namespace Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add ingredient.
+        /// </summary>
+        public static string AddIngredSimple {
+            get {
+                return ResourceManager.GetString("AddIngredSimple", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Amount.
         /// </summary>
         public static string AmountSimple {
@@ -93,6 +102,15 @@ namespace Languages {
         public static string IngredientsSimple {
             get {
                 return ResourceManager.GetString("IngredientsSimple", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Linked Ingredients:.
+        /// </summary>
+        public static string LinkedIngreds {
+            get {
+                return ResourceManager.GetString("LinkedIngreds", resourceCulture);
             }
         }
         
@@ -201,6 +219,15 @@ namespace Languages {
         public static string RecipesSimple {
             get {
                 return ResourceManager.GetString("RecipesSimple", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Save recipe.
+        /// </summary>
+        public static string SaveRecipeSimple {
+            get {
+                return ResourceManager.GetString("SaveRecipeSimple", resourceCulture);
             }
         }
         
