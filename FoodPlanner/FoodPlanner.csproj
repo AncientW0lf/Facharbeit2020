@@ -18,6 +18,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="database.laccdb" />
     <None Remove="Resources\Flags\france.png" />
     <None Remove="Resources\Flags\germany.png" />
     <None Remove="Resources\Flags\spain.png" />
