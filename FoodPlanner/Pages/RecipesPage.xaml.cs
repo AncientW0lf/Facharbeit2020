@@ -76,15 +76,13 @@ namespace FoodPlanner.Pages
 		{
 			var win = new CreateRecipeWin();
 			win.ShowDialog();
-			win.Closed += (_, __) =>
-			{
-				if(win.DialogResult != true)
-					return;
 
-				//App.AccessDB.ExecuteQuery(
-				//	$"insert into Rezepte(Gerichtname, Zubereitung) values('{win.Recipe.Name}', '{win.Recipe.Preparation}')");
-				//TODO: Add queries for Rezeptzutatenliste and Zutaten
-			};
+			if(win.DialogResult != true)
+				return;
+
+			//App.AccessDB.ExecuteQuery(
+			//	$"insert into Rezepte(Gerichtname, Zubereitung) values('{win.Recipe.Name}', '{win.Recipe.Preparation}')");
+			//TODO: Add queries for Rezeptzutatenliste and Zutaten
 		}
 
 		private void OpenEditRecipeWin(object sender, RoutedEventArgs e)
