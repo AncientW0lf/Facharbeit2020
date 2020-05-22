@@ -154,4 +154,19 @@
   <data name="MsgDBNotFound" xml:space="preserve">
     <value>Die verbundene Datenbank konnte nicht gefunden werden! Manche Funktionen könnten nicht funktionieren oder sogar zum Programmabsturz führen.</value>
   </data>
+  <data name="RecipeList" xml:space="preserve">
+    <value>Hier ist eine Liste aller Rezepte welche du bereits erstellt hast:</value>
+  </data>
+  <data name="RecipeName" xml:space="preserve">
+    <value>Rezeptname</value>
+  </data>
+  <data name="RecipePrep" xml:space="preserve">
+    <value>Rezeptzubereitung</value>
+  </data>
+  <data name="RecipeCreate" xml:space="preserve">
+    <value>Rezept erstellen</value>
+  </data>
+  <data name="RecipeEdit" xml:space="preserve">
+    <value>Ausgewähltes Rezept bearbeiten</value>
+  </data>
 </root>

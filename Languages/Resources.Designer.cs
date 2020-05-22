@@ -115,6 +115,51 @@ namespace Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Create a new recipe.
+        /// </summary>
+        public static string RecipeCreate {
+            get {
+                return ResourceManager.GetString("RecipeCreate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit selected recipe.
+        /// </summary>
+        public static string RecipeEdit {
+            get {
+                return ResourceManager.GetString("RecipeEdit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Here is a list of all recipes that you have made thus far:.
+        /// </summary>
+        public static string RecipeList {
+            get {
+                return ResourceManager.GetString("RecipeList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Recipe Name.
+        /// </summary>
+        public static string RecipeName {
+            get {
+                return ResourceManager.GetString("RecipeName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Recipe Preparation.
+        /// </summary>
+        public static string RecipePrep {
+            get {
+                return ResourceManager.GetString("RecipePrep", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Recipes.
         /// </summary>
         public static string RecipesSimple {

@@ -158,4 +158,24 @@
     <value>Could not find connected database! Some functionality may not work or crash the application.</value>
     <comment>Displayed when the DB file is missing.</comment>
   </data>
+  <data name="RecipeList" xml:space="preserve">
+    <value>Here is a list of all recipes that you have made thus far:</value>
+    <comment>Used in the recipe tab.</comment>
+  </data>
+  <data name="RecipeName" xml:space="preserve">
+    <value>Recipe Name</value>
+    <comment>Used in the recipe tab.</comment>
+  </data>
+  <data name="RecipePrep" xml:space="preserve">
+    <value>Recipe Preparation</value>
+    <comment>Used in the recipe tab.</comment>
+  </data>
+  <data name="RecipeCreate" xml:space="preserve">
+    <value>Create a new recipe</value>
+    <comment>Used in the recipe tab.</comment>
+  </data>
+  <data name="RecipeEdit" xml:space="preserve">
+    <value>Edit selected recipe</value>
+    <comment>Used in the recipe tab.</comment>
+  </data>
 </root>

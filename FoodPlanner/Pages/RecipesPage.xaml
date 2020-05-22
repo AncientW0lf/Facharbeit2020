@@ -20,7 +20,7 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <TextBlock Text="Here is a list of all recipes that you have made thus far:" Grid.ColumnSpan="2"/>
+        <TextBlock Text="{x:Static lang:Resources.RecipeList}" Grid.ColumnSpan="2"/>
         <ListBox Name="ListRecipes" Grid.Row="1" Margin="0,5" Grid.ColumnSpan="2" SelectionChanged="ListRecipes_SelectionChanged"/>
 
         <Grid Grid.Row="2" Margin="2,5">
@@ -31,9 +31,9 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
-            <TextBlock Text="Recipe Name" Margin="0,0,0,2"/>
+            <TextBlock Text="{x:Static lang:Resources.RecipeName}" Margin="0,0,0,2"/>
             <TextBox Name="TxtBoxRecipeName" IsReadOnly="True" Margin="0,0,0,5" Grid.Row="1"/>
-            <TextBlock Text="Recipe Preparation" Margin="0,0,0,2" Grid.Row="2"/>
+            <TextBlock Text="{x:Static lang:Resources.RecipePrep}" Margin="0,0,0,2" Grid.Row="2"/>
             <TextBox Name="TxtBoxRecipeDesc" IsReadOnly="True" TextWrapping="Wrap" Grid.Row="3" VerticalScrollBarVisibility="Auto"/>
         </Grid>
 
@@ -43,11 +43,11 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
-            <TextBlock Text="Ingredients" Margin="0,0,0,2"/>
+            <TextBlock Text="{x:Static lang:Resources.IngredientsSimple}" Margin="0,0,0,2"/>
             <ListBox Name="ListIngreds" Grid.Row="1"/>
         </Grid>
 
-        <Button Grid.Row="3" Content="Create a new recipe" Click="OpenNewRecipeWin"/>
-        <Button Grid.Row="3" Grid.Column="1" Content="Edit selected recipe" Click="OpenEditRecipeWin"/>
+        <Button Grid.Row="3" Content="{x:Static lang:Resources.RecipeCreate}" Click="OpenNewRecipeWin"/>
+        <Button Grid.Row="3" Grid.Column="1" Content="{x:Static lang:Resources.RecipeEdit}" Click="OpenEditRecipeWin"/>
     </Grid>
 </Page>
