@@ -43,12 +43,10 @@ namespace FoodPlanner.SQLObj
 			LinkedIngredients = new ObservableCollection<IngredientInfo>();
 			for(int i = 0; i < ingreds.ReturnedRows.Count; i++)
 			{
-				LinkedIngredients.Add(new IngredientInfo
-				{
-					Name = ingreds.ReturnedRows[i][1].ToString(),
-					Amount = ingreds.ReturnedRows[i][2].ToString(),
-					Note = ingreds.ReturnedRows[i][3].ToString()
-				});
+				LinkedIngredients.Add(new IngredientInfo(
+					ingreds.ReturnedRows[i][1].ToString(), 
+					ingreds.ReturnedRows[i][2].ToString(), 
+					ingreds.ReturnedRows[i][3].ToString()));
 			}
 		}
 	}
