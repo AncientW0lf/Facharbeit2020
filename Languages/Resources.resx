@@ -163,11 +163,11 @@
     <comment>Used in the recipe tab.</comment>
   </data>
   <data name="RecipeName" xml:space="preserve">
-    <value>Recipe Name</value>
+    <value>Recipe Name:</value>
     <comment>Used in the recipe tab.</comment>
   </data>
   <data name="RecipePrep" xml:space="preserve">
-    <value>Recipe Preparation</value>
+    <value>Recipe Preparation:</value>
     <comment>Used in the recipe tab.</comment>
   </data>
   <data name="RecipeCreate" xml:space="preserve">
@@ -177,5 +177,8 @@
   <data name="RecipeEdit" xml:space="preserve">
     <value>Edit selected recipe</value>
     <comment>Used in the recipe tab.</comment>
+  </data>
+  <data name="NewRecipeSimple" xml:space="preserve">
+    <value>New Recipe</value>
   </data>
 </root>

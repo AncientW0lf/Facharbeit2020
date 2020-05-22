@@ -158,15 +158,18 @@
     <value>Hier ist eine Liste aller Rezepte welche du bereits erstellt hast:</value>
   </data>
   <data name="RecipeName" xml:space="preserve">
-    <value>Rezeptname</value>
+    <value>Rezeptname:</value>
   </data>
   <data name="RecipePrep" xml:space="preserve">
-    <value>Rezeptzubereitung</value>
+    <value>Rezeptzubereitung:</value>
   </data>
   <data name="RecipeCreate" xml:space="preserve">
     <value>Rezept erstellen</value>
   </data>
   <data name="RecipeEdit" xml:space="preserve">
     <value>Ausgewähltes Rezept bearbeiten</value>
+  </data>
+  <data name="NewRecipeSimple" xml:space="preserve">
+    <value>Neues Rezept</value>
   </data>
 </root>

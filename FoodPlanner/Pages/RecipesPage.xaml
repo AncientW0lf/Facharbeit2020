@@ -21,7 +21,11 @@
         </Grid.ColumnDefinitions>
 
         <TextBlock Text="{x:Static lang:Resources.RecipeList}" Grid.ColumnSpan="2"/>
-        <ListBox Name="ListRecipes" Grid.Row="1" Margin="0,5" Grid.ColumnSpan="2" SelectionChanged="ListRecipes_SelectionChanged"/>
+        <ListBox Name="ListRecipes" 
+                 Grid.Row="1" 
+                 Margin="0,5"
+                 Grid.ColumnSpan="2"
+                 SelectionChanged="ListRecipes_SelectionChanged"/>
 
         <Grid Grid.Row="2" Margin="2,5">
             <Grid.RowDefinitions>

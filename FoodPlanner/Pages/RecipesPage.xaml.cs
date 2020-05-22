@@ -5,6 +5,7 @@ using System.Windows;
 using AccessCommunication;
 using System.Windows.Controls;
 using BoxLib.Scripts;
+using FoodPlanner.AdditionalWindows;
 
 namespace FoodPlanner.Pages
 {
@@ -24,7 +25,7 @@ namespace FoodPlanner.Pages
 		{
 			InitializeComponent();
 
-			Task.Run(async() =>
+			Task.Run(async () =>
 			{
 				_recipes = await App.AccessDB.ExecuteQuery(
 					"select ID, Gerichtname, Zubereitung from Rezepte");
@@ -59,7 +60,7 @@ namespace FoodPlanner.Pages
 			TxtBoxRecipeDesc.Text = selected[2].ToString() ?? "";
 
 			ListIngreds.Items.Clear();
-			for (int i = 0; i < selectedIngreds.Length; i++)
+			for(int i = 0; i < selectedIngreds.Length; i++)
 			{
 				ListIngreds.Items.Add(new ListBoxItem
 				{
@@ -73,12 +74,31 @@ namespace FoodPlanner.Pages
 
 		private void OpenNewRecipeWin(object sender, RoutedEventArgs e)
 		{
-			throw new System.NotImplementedException();
+			var win = new CreateRecipeWin();
+			win.ShowDialog();
+			win.Closed += (_, __) =>
+			{
+				if(win.DialogResult != true)
+					return;
+
+				//App.AccessDB.ExecuteQuery(
+				//	$"insert into Rezepte(Gerichtname, Zubereitung) values('{win.Recipe.Name}', '{win.Recipe.Preparation}')");
+				//TODO: Add queries for Rezeptzutatenliste and Zutaten
+			};
 		}
 
 		private void OpenEditRecipeWin(object sender, RoutedEventArgs e)
 		{
-			throw new System.NotImplementedException();
+			//TODO: Add ability to correctly edit recipes
+			var win = new CreateRecipeWin(_recipes.ReturnedRows[]);
+			win.ShowDialog();
+			win.Closed += (_, __) =>
+			{
+				if(win.DialogResult != true)
+					return;
+
+				//TODO: Add queries for Rezepte, Rezeptzutatenliste and Zutaten
+			};
 		}
 	}
 }
