@@ -1,11 +1,11 @@
-﻿using System.Diagnostics;
+﻿using AccessCommunication;
+using BoxLib.Scripts;
+using FoodPlanner.AdditionalWindows;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
-using AccessCommunication;
 using System.Windows.Controls;
-using BoxLib.Scripts;
-using FoodPlanner.AdditionalWindows;
 
 namespace FoodPlanner.Pages
 {
@@ -88,17 +88,19 @@ namespace FoodPlanner.Pages
 		}
 
 		private void OpenEditRecipeWin(object sender, RoutedEventArgs e)
-		{
-			//TODO: Add ability to correctly edit recipes
-			var win = new CreateRecipeWin(_recipes.ReturnedRows[]);
-			win.ShowDialog();
-			win.Closed += (_, __) =>
-			{
-				if(win.DialogResult != true)
-					return;
+		{			
+			object[] selected = _recipes.ReturnedRows.FirstOrDefault(a => a[1].Equals(ListRecipes.SelectedItem?.ToString()));
 
-				//TODO: Add queries for Rezepte, Rezeptzutatenliste and Zutaten
-			};
+			if(selected == null) 
+				return;
+
+			var win = new CreateRecipeWin((int)selected[0]);
+			win.ShowDialog();
+
+			if(win.DialogResult != true)
+				return;
+
+			//TODO: Add queries for Rezepte, Rezeptzutatenliste and Zutaten
 		}
 	}
 }
