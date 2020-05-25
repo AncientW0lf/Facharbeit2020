@@ -199,4 +199,11 @@
   <data name="DelRecipeConfirm" xml:space="preserve">
     <value>Bist du dir sicher, dass du das Rezept "$1" löschen willst? Diese Operation kann nicht rückgängig gemacht werden!</value>
   </data>
+  <data name="MsgInvalidRecipeContent" xml:space="preserve">
+    <value>Dieses Rezept kann nicht gespeichert werden da dessen Inhalt nicht erlaubte Zeichen enthält!
+
+Nicht erlaubte Zeichen:
+Einfache Anführungszeichen
+Doppelte Anführungszeichen</value>
+  </data>
 </root>

@@ -151,6 +151,19 @@ namespace Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to This recipe cannot be saved because its content contains illegal characters!
+        ///
+        ///Illegal characters:
+        ///Single quotes
+        ///Double quotes.
+        /// </summary>
+        public static string MsgInvalidRecipeContent {
+            get {
+                return ResourceManager.GetString("MsgInvalidRecipeContent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Name.
         /// </summary>
         public static string NameSimple {

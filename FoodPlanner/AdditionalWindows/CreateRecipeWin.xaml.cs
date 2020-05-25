@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Windows;
 
 namespace FoodPlanner.AdditionalWindows
@@ -38,6 +39,19 @@ namespace FoodPlanner.AdditionalWindows
 
 		private void ConfirmRecipe(object sender, RoutedEventArgs e)
 		{
+			var matcher = new Regex(".*(\\\"|').*");
+
+			if(matcher.IsMatch(((FullRecipe)DataContext).Name)
+			   || matcher.IsMatch(((FullRecipe)DataContext).Preparation)
+			   || ((FullRecipe)DataContext).LinkedIngredients.Any(a => matcher.IsMatch(a.Name)
+			                                                           || matcher.IsMatch(a.Amount)
+			                                                           || matcher.IsMatch(a.Note)))
+			{
+				MessageBox.Show(Languages.Resources.MsgInvalidRecipeContent, Languages.Resources.ErrorSimple,
+					MessageBoxButton.OK, MessageBoxImage.Error);
+				return;
+			}
+
 			DialogResult = true;
 			Recipe = (FullRecipe)DataContext;
 			Close();

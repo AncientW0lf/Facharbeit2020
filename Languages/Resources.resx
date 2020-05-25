@@ -212,4 +212,12 @@
   <data name="DelRecipeConfirm" xml:space="preserve">
     <value>Are you sure you want to delete the recipe "$1"? This operation cannot be undone!</value>
   </data>
+  <data name="MsgInvalidRecipeContent" xml:space="preserve">
+    <value>This recipe cannot be saved because its content contains illegal characters!
+
+Illegal characters:
+Single quotes
+Double quotes</value>
+    <comment>Used when creating a new recipe.</comment>
+  </data>
 </root>
