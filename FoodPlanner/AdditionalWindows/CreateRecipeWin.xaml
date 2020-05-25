@@ -6,7 +6,7 @@
 		xmlns:local="clr-namespace:FoodPlanner.AdditionalWindows"
 		xmlns:lang="clr-namespace:Languages;assembly=Languages"
 		mc:Ignorable="d"
-		Title="CreateRecipeWin"
+		Title="{x:Static lang:Resources.NewRecipeSimple}"
 		Width="640"
 		Height="480">
 	<Grid>
