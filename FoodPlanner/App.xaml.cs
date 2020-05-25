@@ -6,6 +6,7 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Security;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Threading;
 
@@ -21,7 +22,7 @@ namespace FoodPlanner
 		/// </summary>
 		public static LanguageHelper LangHelper;
 
-		public static AccessComm AccessDB;
+		private static AccessComm _accessDB;
 
 		public const string DBPassword = "Ywc^r72*qX45ndtK";
 
@@ -58,7 +59,7 @@ namespace FoodPlanner
 					secure.AppendChar(DBPassword[i]);
 				}
 
-				AccessDB = new AccessComm("database.accdb", secure);
+				_accessDB = new AccessComm("database.accdb", secure);
 			}
 			catch(FileNotFoundException exc)
 			{
@@ -75,7 +76,7 @@ namespace FoodPlanner
 		private void App_OnExit(object sender, ExitEventArgs e)
 		{
 			SaveLanguageToFile(Languages.Resources.Culture);
-			AccessDB.Dispose();
+			_accessDB.Dispose();
 			Log.Close();
 		}
 
@@ -97,6 +98,15 @@ namespace FoodPlanner
 			string languageStr = reader.ReadLine();
 
 			return languageStr != null ? new CultureInfo(languageStr) : null;
+		}
+
+		public static async Task<QueryResult> ExecuteQuery(string query)
+		{
+			QueryResult queryRes = await _accessDB.ExecuteQuery(query);
+			Log.Write("Executed SQL query:", 1, TraceEventType.Information, true);
+			Log.Write($"Query: {queryRes.ExecutedQuery}\nSuccess: {queryRes.Success}", 2, null);
+
+			return queryRes;
 		}
 
 		/// <summary>

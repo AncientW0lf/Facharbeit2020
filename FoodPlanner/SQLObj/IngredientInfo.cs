@@ -1,6 +1,4 @@
 ﻿using AccessCommunication;
-using BoxLib.Scripts;
-using System.Diagnostics;
 
 namespace FoodPlanner.SQLObj
 {
@@ -21,11 +19,9 @@ namespace FoodPlanner.SQLObj
 
 		public IngredientInfo(int ingredientID)
 		{
-			QueryResult ingredient = App.AccessDB.ExecuteQuery(
+			QueryResult ingredient = App.ExecuteQuery(
 				"select ID, Zutat from Zutaten " +
 				$"where ID = {ingredientID}").GetAwaiter().GetResult();
-			Log.Write("Executed SQL query:", 1, TraceEventType.Information, true);
-			Log.Write($"Query: {ingredient.ExecutedQuery}\nSuccess: {ingredient.Success}", 2, null);
 
 			if(!ingredient.Success)
 				return;
@@ -35,12 +31,10 @@ namespace FoodPlanner.SQLObj
 
 		public IngredientInfo(int ingredientID, int recipeID)
 		{
-			QueryResult ingredient = App.AccessDB.ExecuteQuery(
+			QueryResult ingredient = App.ExecuteQuery(
 				"select Rezepte_ID, Zutaten_ID, Zutat, Menge, Notiz from ZusammenfassungRezeptzutatenliste " +
 				$"where Zutaten_ID = {ingredientID} " +
 				$"and Rezepte_ID = {recipeID}").GetAwaiter().GetResult();
-			Log.Write("Executed SQL query:", 1, TraceEventType.Information, true);
-			Log.Write($"Query: {ingredient.ExecutedQuery}\nSuccess: {ingredient.Success}", 2, null);
 
 			if(!ingredient.Success)
 				return;

@@ -1,8 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using AccessCommunication;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Diagnostics;
-using AccessCommunication;
-using BoxLib.Scripts;
 
 namespace FoodPlanner.SQLObj
 {
@@ -23,16 +21,12 @@ namespace FoodPlanner.SQLObj
 
 		public FullRecipe(int recipeID)
 		{
-			QueryResult recipe = App.AccessDB.ExecuteQuery("select ID, Gerichtname, Zubereitung from Rezepte " +
+			QueryResult recipe = App.ExecuteQuery("select ID, Gerichtname, Zubereitung from Rezepte " +
 			                                                $"where ID = {recipeID}").GetAwaiter().GetResult();
-			Log.Write("Executed SQL query:", 1, TraceEventType.Information, true);
-			Log.Write($"Query: {recipe.ExecutedQuery}\nSuccess: {recipe.Success}", 2, null);
 
-			QueryResult ingreds = App.AccessDB.ExecuteQuery(
+			QueryResult ingreds = App.ExecuteQuery(
 				"select Rezepte_ID, Zutat, Menge, Notiz from ZusammenfassungRezeptzutatenliste " +
 				$"where Rezepte_ID = {recipeID}").GetAwaiter().GetResult();
-			Log.Write("Executed SQL query:", 1, TraceEventType.Information, true);
-			Log.Write($"Query: {ingreds.ExecutedQuery}\nSuccess: {ingreds.Success}", 2, null);
 
 			if(!recipe.Success || !ingreds.Success)
 				return;

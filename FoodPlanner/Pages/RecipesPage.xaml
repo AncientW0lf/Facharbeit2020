@@ -51,7 +51,10 @@
             <ListBox Name="ListIngreds" Grid.Row="1"/>
         </Grid>
 
-        <Button Grid.Row="3" Content="{x:Static lang:Resources.RecipeCreate}" Click="OpenNewRecipeWin"/>
-        <Button Grid.Row="3" Grid.Column="1" Content="{x:Static lang:Resources.RecipeEdit}" Click="OpenEditRecipeWin"/>
+        <StackPanel Orientation="Horizontal" Grid.Row="3" Grid.ColumnSpan="2" HorizontalAlignment="Center">
+            <Button Content="{x:Static lang:Resources.RecipeCreate}" Click="OpenNewRecipeWin" Margin="5,0"/>
+            <Button Content="{x:Static lang:Resources.RecipeEdit}" Click="OpenEditRecipeWin" Margin="5,0"/>
+            <Button Content="{x:Static lang:Resources.RecipeDelete}" Click="DeleteRecipe" Margin="5,0"/>
+        </StackPanel>
     </Grid>
 </Page>

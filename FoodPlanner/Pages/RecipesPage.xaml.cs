@@ -27,15 +27,11 @@ namespace FoodPlanner.Pages
 
 			Task.Run(async () =>
 			{
-				_recipes = await App.AccessDB.ExecuteQuery(
+				_recipes = await App.ExecuteQuery(
 					"select ID, Gerichtname, Zubereitung from Rezepte");
-				Log.Write("Executed SQL query:", 1, TraceEventType.Information, true);
-				Log.Write($"Query: {_recipes.ExecutedQuery}\nSuccess: {_recipes.Success}", 2, null);
 
-				_ingredients = await App.AccessDB.ExecuteQuery(
+				_ingredients = await App.ExecuteQuery(
 					"select Rezepte_ID, Gerichtname, Zutat, Menge, Notiz from ZusammenfassungRezeptzutatenliste");
-				Log.Write("Executed SQL query:", 1, TraceEventType.Information, true);
-				Log.Write($"Query: {_ingredients.ExecutedQuery}\nSuccess: {_ingredients.Success}", 2, null);
 
 				await Dispatcher.InvokeAsync(() =>
 				{
@@ -72,7 +68,7 @@ namespace FoodPlanner.Pages
 			}
 		}
 
-		private void OpenNewRecipeWin(object sender, RoutedEventArgs e)
+		private async void OpenNewRecipeWin(object sender, RoutedEventArgs e)
 		{
 			var win = new CreateRecipeWin();
 			win.ShowDialog();
@@ -80,12 +76,12 @@ namespace FoodPlanner.Pages
 			if(win.DialogResult != true)
 				return;
 
-			//App.AccessDB.ExecuteQuery(
-			//	$"insert into Rezepte(Gerichtname, Zubereitung) values('{win.Recipe.Name}', '{win.Recipe.Preparation}')");
+			await App.ExecuteQuery(
+				$"insert into Rezepte(Gerichtname, Zubereitung) values('{win.Recipe.Name}', '{win.Recipe.Preparation}')");
 			//TODO: Add queries for Rezeptzutatenliste and Zutaten
 		}
 
-		private void OpenEditRecipeWin(object sender, RoutedEventArgs e)
+		private async void OpenEditRecipeWin(object sender, RoutedEventArgs e)
 		{			
 			object[] selected = _recipes.ReturnedRows.FirstOrDefault(a => a[1].Equals(ListRecipes.SelectedItem?.ToString()));
 
@@ -99,6 +95,18 @@ namespace FoodPlanner.Pages
 				return;
 
 			//TODO: Add queries for Rezepte, Rezeptzutatenliste and Zutaten
+		}
+
+		private async void DeleteRecipe(object sender, RoutedEventArgs e)
+		{
+			object[] selected = _recipes.ReturnedRows.FirstOrDefault(a => a[1].Equals(ListRecipes.SelectedItem?.ToString()));
+
+			if(selected == null || MessageBox.Show(Languages.Resources.DelRecipeConfirm.Replace("$1", selected[1].ToString()),
+				Languages.Resources.ConfirmSimple, MessageBoxButton.YesNo, MessageBoxImage.Question,
+				MessageBoxResult.No) == MessageBoxResult.No)
+				return;
+
+			QueryResult result = await App.ExecuteQuery("");
 		}
 	}
 }

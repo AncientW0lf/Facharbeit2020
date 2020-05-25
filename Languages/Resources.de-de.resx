@@ -190,4 +190,13 @@
   <data name="SaveRecipeSimple" xml:space="preserve">
     <value>Rezept speichern</value>
   </data>
+  <data name="RecipeDelete" xml:space="preserve">
+    <value>Ausgewähltes Rezept löschen</value>
+  </data>
+  <data name="ConfirmSimple" xml:space="preserve">
+    <value>Bestätigen</value>
+  </data>
+  <data name="DelRecipeConfirm" xml:space="preserve">
+    <value>Bist du dir sicher, dass du das Rezept "$1" löschen willst? Diese Operation kann nicht rückgängig gemacht werden!</value>
+  </data>
 </root>

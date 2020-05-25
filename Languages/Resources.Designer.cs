@@ -88,6 +88,24 @@ namespace Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Confirm.
+        /// </summary>
+        public static string ConfirmSimple {
+            get {
+                return ResourceManager.GetString("ConfirmSimple", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to delete the recipe &quot;$1&quot;? This operation cannot be undone!.
+        /// </summary>
+        public static string DelRecipeConfirm {
+            get {
+                return ResourceManager.GetString("DelRecipeConfirm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Error.
         /// </summary>
         public static string ErrorSimple {
@@ -174,6 +192,15 @@ namespace Languages {
         public static string RecipeCreate {
             get {
                 return ResourceManager.GetString("RecipeCreate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delete selected recipe.
+        /// </summary>
+        public static string RecipeDelete {
+            get {
+                return ResourceManager.GetString("RecipeDelete", resourceCulture);
             }
         }
         

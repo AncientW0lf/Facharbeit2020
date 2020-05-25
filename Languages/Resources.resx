@@ -202,4 +202,14 @@
     <value>Save recipe</value>
     <comment>Used when creating a new recipe.</comment>
   </data>
+  <data name="RecipeDelete" xml:space="preserve">
+    <value>Delete selected recipe</value>
+    <comment>Used in the recipe tab.</comment>
+  </data>
+  <data name="ConfirmSimple" xml:space="preserve">
+    <value>Confirm</value>
+  </data>
+  <data name="DelRecipeConfirm" xml:space="preserve">
+    <value>Are you sure you want to delete the recipe "$1"? This operation cannot be undone!</value>
+  </data>
 </root>

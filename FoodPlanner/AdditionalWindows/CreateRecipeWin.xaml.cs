@@ -28,7 +28,7 @@ namespace FoodPlanner.AdditionalWindows
 
 			((FullRecipe)DataContext).LinkedIngredients.CollectionChanged += UpdateIngredientsToBeAddedList;
 
-			_allIngreds = App.AccessDB.ExecuteQuery("select ID, Zutat from Zutaten").GetAwaiter().GetResult();
+			_allIngreds = App.ExecuteQuery("select ID, Zutat from Zutaten").GetAwaiter().GetResult();
 			_allIngredsString = new ObservableCollection<string>(_allIngreds.ReturnedRows
 				.Select(a => a[1].ToString())
 				.OrderBy(b => b));
