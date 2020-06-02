@@ -14,6 +14,14 @@ namespace FoodPlanner.SQLObj
 
 		public ObservableCollection<IngredientInfo> LinkedIngredients { get; set; }
 
+		public FullRecipe(int? id, string name, string preparation, IEnumerable<IngredientInfo> ingredients)
+		{
+			ID = id;
+			Name = name;
+			Preparation = preparation;
+			LinkedIngredients = new ObservableCollection<IngredientInfo>(ingredients);
+		}
+
 		public FullRecipe(string name, string preparation, IEnumerable<IngredientInfo> ingredients)
 		{
 			Name = name;

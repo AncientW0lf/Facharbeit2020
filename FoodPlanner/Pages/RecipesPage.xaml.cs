@@ -1,8 +1,8 @@
-﻿using System;
-using AccessCommunication;
+﻿using AccessCommunication;
 using FoodPlanner.AdditionalWindows;
+using FoodPlanner.SQLObj;
+using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
@@ -39,7 +39,11 @@ namespace FoodPlanner.Pages
 					ListRecipes.Items.Clear();
 					for(int i = 0; i < _recipes.ReturnedRows.Count; i++)
 					{
-						ListRecipes.Items.Add(_recipes.ReturnedRows[i][1]);
+						ListRecipes.Items.Add(new FullRecipe(
+							_recipes.ReturnedRows[i][0] as int?, 
+							_recipes.ReturnedRows[i][1].ToString(), 
+							_recipes.ReturnedRows[i][2].ToString(),
+							new IngredientInfo[0]));
 					}
 				});
 			});
@@ -47,7 +51,7 @@ namespace FoodPlanner.Pages
 
 		private void ListRecipes_SelectionChanged(object sender, SelectionChangedEventArgs e)
 		{
-			object[] selected = _recipes.ReturnedRows.FirstOrDefault(a => a[1].Equals(e.AddedItems[0]));
+			object[] selected = _recipes.ReturnedRows.FirstOrDefault(a => a[0].Equals(((FullRecipe)e.AddedItems[0])?.ID));
 			object[][] selectedIngreds = _ingredients.ReturnedRows.Where(a => a[0].Equals(selected?[0])).ToArray();
 
 			if(selected == null)
@@ -117,7 +121,7 @@ namespace FoodPlanner.Pages
 
 		private async void OpenEditRecipeWin(object sender, RoutedEventArgs e)
 		{			
-			object[] selected = _recipes.ReturnedRows.FirstOrDefault(a => a[1].Equals(ListRecipes.SelectedItem?.ToString()));
+			object[] selected = _recipes.ReturnedRows.FirstOrDefault(a => a[0].Equals(((FullRecipe)ListRecipes.SelectedItem)?.ID));
 
 			if(selected == null) 
 				return;
@@ -164,7 +168,7 @@ namespace FoodPlanner.Pages
 
 		private async void DeleteRecipe(object sender, RoutedEventArgs e)
 		{
-			object[] selected = _recipes.ReturnedRows.FirstOrDefault(a => a[1].Equals(ListRecipes.SelectedItem?.ToString()));
+			object[] selected = _recipes.ReturnedRows.FirstOrDefault(a => a[0].Equals(((FullRecipe)ListRecipes.SelectedItem)?.ID));
 
 			if(selected == null || MessageBox.Show(Languages.Resources.DelRecipeConfirm.Replace("$1", selected[1].ToString()),
 				Languages.Resources.ConfirmSimple, MessageBoxButton.YesNo, MessageBoxImage.Question,

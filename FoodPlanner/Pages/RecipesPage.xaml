@@ -5,6 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:FoodPlanner.Pages"
       xmlns:lang="clr-namespace:Languages;assembly=Languages"
+      xmlns:sqlObj="clr-namespace:FoodPlanner.SQLObj"
       mc:Ignorable="d"
       d:DesignWidth="768"
       d:DesignHeight="432">
@@ -25,7 +26,13 @@
                  Grid.Row="1" 
                  Margin="0,5"
                  Grid.ColumnSpan="2"
-                 SelectionChanged="ListRecipes_SelectionChanged"/>
+                 SelectionChanged="ListRecipes_SelectionChanged">
+            <ListBox.ItemTemplate>
+                <DataTemplate DataType="sqlObj:FullRecipe">
+                    <TextBlock Text="{Binding Name}"/>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
 
         <Grid Grid.Row="2" Margin="2,5">
             <Grid.RowDefinitions>
