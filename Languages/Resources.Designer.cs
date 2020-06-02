@@ -97,6 +97,17 @@ namespace Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Executed $1 deletion queries.
+        ///Success: $2
+        ///Affected rows: $3.
+        /// </summary>
+        public static string DelQueriesInfo {
+            get {
+                return ResourceManager.GetString("DelQueriesInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to delete the recipe &quot;$1&quot;? This operation cannot be undone!.
         /// </summary>
         public static string DelRecipeConfirm {
@@ -111,6 +122,15 @@ namespace Languages {
         public static string ErrorSimple {
             get {
                 return ResourceManager.GetString("ErrorSimple", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Info.
+        /// </summary>
+        public static string InfoSimple {
+            get {
+                return ResourceManager.GetString("InfoSimple", resourceCulture);
             }
         }
         

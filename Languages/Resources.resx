@@ -228,4 +228,13 @@ Double quotes</value>
     <value>Recipe saved successfully!</value>
     <comment>Used after creating a recipe and no queries failed.</comment>
   </data>
+  <data name="InfoSimple" xml:space="preserve">
+    <value>Info</value>
+  </data>
+  <data name="DelQueriesInfo" xml:space="preserve">
+    <value>Executed $1 deletion queries.
+Success: $2
+Affected rows: $3</value>
+    <comment>Used when deleting a recipe.</comment>
+  </data>
 </root>

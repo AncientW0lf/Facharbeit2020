@@ -1,6 +1,8 @@
-﻿using AccessCommunication;
+﻿using System;
+using AccessCommunication;
 using FoodPlanner.AdditionalWindows;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
@@ -108,6 +110,8 @@ namespace FoodPlanner.Pages
 				MessageBox.Show(Languages.Resources.MsgRecipeCreated, 
 					Languages.Resources.SuccessSimple, MessageBoxButton.OK, MessageBoxImage.Information);
 			}
+
+			NavigationService?.Refresh();
 		}
 
 		private async void OpenEditRecipeWin(object sender, RoutedEventArgs e)
@@ -135,7 +139,22 @@ namespace FoodPlanner.Pages
 				MessageBoxResult.No) == MessageBoxResult.No)
 				return;
 
-			QueryResult result = await App.ExecuteQuery("");
+			QueryResult result = default, result2 = default;
+			try
+			{
+				result = await App.ExecuteQuery($"delete from Rezeptzutatenliste where IDRezepte = {selected[0]}");
+				result2 = await App.ExecuteQuery($"delete from Rezepte where ID = {selected[0]}");
+			}
+			catch(Exception)
+			{
+				//Ignore
+			}
+
+			MessageBox.Show(Languages.Resources.DelQueriesInfo
+					.Replace("$1", "2")
+					.Replace("$2", (result.Success && result2.Success).ToString())
+					.Replace("$3", (result.RecordsAffected + result2.RecordsAffected).ToString()),
+				Languages.Resources.InfoSimple, MessageBoxButton.OK, MessageBoxImage.Information);
 		}
 	}
 }

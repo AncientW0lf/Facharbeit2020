@@ -212,4 +212,12 @@ Doppelte Anführungszeichen</value>
   <data name="MsgRecipeCreated" xml:space="preserve">
     <value>Rezept erfolgreich gespeichert!</value>
   </data>
+  <data name="InfoSimple" xml:space="preserve">
+    <value>Info</value>
+  </data>
+  <data name="DelQueriesInfo" xml:space="preserve">
+    <value>Es wurden $1 Lösch-Queries ausgeführt.
+Erfolg: $2
+Betroffene Zeilen: $3</value>
+  </data>
 </root>
