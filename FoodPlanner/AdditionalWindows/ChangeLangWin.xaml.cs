@@ -1,4 +1,4 @@
-﻿using BoxLib.Scripts;
+﻿using BoxLib.Static;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Windows;

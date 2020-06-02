@@ -4,7 +4,7 @@ using System.Globalization;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
-using BoxLib.Scripts;
+using BoxLib.Static;
 
 namespace FoodPlanner.Pages
 {
