@@ -1,5 +1,6 @@
 ﻿using AccessCommunication;
 using FoodPlanner.SQLObj;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
@@ -43,9 +44,9 @@ namespace FoodPlanner.AdditionalWindows
 
 			if(matcher.IsMatch(((FullRecipe)DataContext).Name)
 			   || matcher.IsMatch(((FullRecipe)DataContext).Preparation)
-			   || ((FullRecipe)DataContext).LinkedIngredients.Any(a => matcher.IsMatch(a.Name)
-			                                                           || matcher.IsMatch(a.Amount)
-			                                                           || matcher.IsMatch(a.Note)))
+			   || ((FullRecipe)DataContext).LinkedIngredients.Any(a => matcher.IsMatch(a.Name ?? string.Empty)
+			                                                           || matcher.IsMatch(a.Amount ?? string.Empty)
+			                                                           || matcher.IsMatch(a.Note ?? string.Empty)))
 			{
 				MessageBox.Show(Languages.Resources.MsgInvalidRecipeContent, Languages.Resources.ErrorSimple,
 					MessageBoxButton.OK, MessageBoxImage.Error);
