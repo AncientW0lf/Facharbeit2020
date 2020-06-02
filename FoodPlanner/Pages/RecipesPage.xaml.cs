@@ -155,6 +155,8 @@ namespace FoodPlanner.Pages
 					.Replace("$2", (result.Success && result2.Success).ToString(Languages.Resources.Culture))
 					.Replace("$3", (result.RecordsAffected + result2.RecordsAffected).ToString()),
 				Languages.Resources.InfoSimple, MessageBoxButton.OK, MessageBoxImage.Information);
+
+			NavigationService?.Refresh();
 		}
 	}
 }
