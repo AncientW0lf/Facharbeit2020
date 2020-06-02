@@ -152,7 +152,7 @@ namespace FoodPlanner.Pages
 
 			MessageBox.Show(Languages.Resources.DelQueriesInfo
 					.Replace("$1", "2")
-					.Replace("$2", (result.Success && result2.Success).ToString())
+					.Replace("$2", (result.Success && result2.Success).ToString(Languages.Resources.Culture))
 					.Replace("$3", (result.RecordsAffected + result2.RecordsAffected).ToString()),
 				Languages.Resources.InfoSimple, MessageBoxButton.OK, MessageBoxImage.Information);
 		}
