@@ -6,6 +6,8 @@ namespace FoodPlanner.SQLObj
 {
 	public class FullRecipe
 	{
+		public int? ID { get; set; }
+
 		public string Name { get; set; }
 
 		public string Preparation { get; set; }
@@ -31,6 +33,7 @@ namespace FoodPlanner.SQLObj
 			if(!recipe.Success || !ingreds.Success)
 				return;
 
+			ID = recipeID;
 			Name = recipe.ReturnedRows[0][1].ToString();
 			Preparation = recipe.ReturnedRows[0][2].ToString();
 
