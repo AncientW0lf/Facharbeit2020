@@ -202,6 +202,15 @@ namespace Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Recipe could not be fully updated! Please edit the database manually and update the remaining data sets ($1 queries failed)..
+        /// </summary>
+        public static string MsgRecipeUpdatedWithErrors {
+            get {
+                return ResourceManager.GetString("MsgRecipeUpdatedWithErrors", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Name.
         /// </summary>
         public static string NameSimple {

@@ -237,4 +237,8 @@ Success: $2
 Affected rows: $3</value>
     <comment>Used when deleting a recipe.</comment>
   </data>
+  <data name="MsgRecipeUpdatedWithErrors" xml:space="preserve">
+    <value>Recipe could not be fully updated! Please edit the database manually and update the remaining data sets ($1 queries failed).</value>
+    <comment>Used after updating a recipe and at least one query fails.</comment>
+  </data>
 </root>

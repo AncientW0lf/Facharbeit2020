@@ -216,8 +216,11 @@ Doppelte Anführungszeichen</value>
     <value>Info</value>
   </data>
   <data name="DelQueriesInfo" xml:space="preserve">
-    <value>Es wurden $1 Lösch-Queries ausgeführt.
+    <value>Es wurden $1 Lösch-Anfragen ausgeführt.
 Erfolg: $2
 Betroffene Zeilen: $3</value>
+  </data>
+  <data name="MsgRecipeUpdatedWithErrors" xml:space="preserve">
+    <value>Das Rezept konnte nicht vollständig bearbeitet werden! Bitte editiere die Datenbank manuell und update die verbleibenden Datensätze ($1 Anfragen fehlgeschlagen).</value>
   </data>
 </root>

@@ -102,7 +102,8 @@ namespace FoodPlanner.Pages
 
 			if(!allResults.All(a => a.Success))
 			{
-				MessageBox.Show(Languages.Resources.MsgRecipeCreatedWithErrors.Replace("$1", allResults.Count(a => !a.Success).ToString()), 
+				MessageBox.Show(Languages.Resources.MsgRecipeCreatedWithErrors
+						.Replace("$1", allResults.Count(a => !a.Success).ToString()), 
 					Languages.Resources.ErrorSimple, MessageBoxButton.OK, MessageBoxImage.Error);
 			}
 			else
@@ -127,7 +128,38 @@ namespace FoodPlanner.Pages
 			if(win.DialogResult != true)
 				return;
 
-			//TODO: Add queries for Rezepte, Rezeptzutatenliste and Zutaten
+			var allResults = new List<QueryResult>
+			{
+				await App.ExecuteQuery(
+					"update Rezepte " +
+					$"set Gerichtname = '{win.Recipe.Name}', Zubereitung = '{win.Recipe.Preparation}' " +
+					$"where ID = {win.Recipe.ID}"),
+				await App.ExecuteQuery($"delete from Rezeptzutatenliste where IDRezepte = {win.Recipe.ID}")
+			};
+
+			for (int i = 0; i < win.Recipe.LinkedIngredients.Count; i++)
+			{
+				allResults.Add(await App.ExecuteQuery(
+					"insert into Rezeptzutatenliste(IDRezepte, IDZutaten, Menge, Notiz) " +
+					$"values({win.Recipe.ID}, " +
+					$"{win.Recipe.LinkedIngredients[i].ID}, " +
+					$"'{win.Recipe.LinkedIngredients[i].Amount}', " +
+					$"'{win.Recipe.LinkedIngredients[i].Note}')"));
+			}
+
+			if (!allResults.All(a => a.Success))
+			{
+				MessageBox.Show(Languages.Resources.MsgRecipeUpdatedWithErrors
+						.Replace("$1", allResults.Count(a => !a.Success).ToString()), 
+					Languages.Resources.ErrorSimple, MessageBoxButton.OK, MessageBoxImage.Error);
+			}
+			else
+			{
+				MessageBox.Show(Languages.Resources.MsgRecipeCreated, 
+					Languages.Resources.SuccessSimple, MessageBoxButton.OK, MessageBoxImage.Information);
+			}
+
+			NavigationService?.Refresh();
 		}
 
 		private async void DeleteRecipe(object sender, RoutedEventArgs e)
