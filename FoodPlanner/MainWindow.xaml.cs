@@ -13,6 +13,8 @@ namespace FoodPlanner
 		public MainWindow()
 		{
 			InitializeComponent();
+
+			App.CurrWindow = this;
 		}
 	}
 }

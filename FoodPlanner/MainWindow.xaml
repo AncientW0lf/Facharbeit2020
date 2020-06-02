@@ -9,7 +9,7 @@
         Title="FoodPlanner" 
         Height="450" 
         Width="800">
-    <TabControl>
+    <TabControl Name="MainTabs">
         <TabItem Header="{x:Static lang:Resources.WelcomeSimple}">
             <Frame Background="#eee" Padding="5" Source="Pages/WelcomePage.xaml" NavigationUIVisibility="Hidden"/>
         </TabItem>

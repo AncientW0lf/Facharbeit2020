@@ -1,4 +1,7 @@
-﻿using System.Windows.Controls;
+﻿using System;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace FoodPlanner.Pages
 {
@@ -13,6 +16,15 @@ namespace FoodPlanner.Pages
 		public WelcomePage()
 		{
 			InitializeComponent();
+		}
+
+		private void CreateRecipeLink(object sender, RoutedEventArgs e)
+		{
+			MainWindow parentWin = App.CurrWindow;
+			if(parentWin != null)
+			{
+				parentWin.MainTabs.SelectedIndex = 2;
+			}
 		}
 	}
 }

@@ -23,6 +23,8 @@ namespace FoodPlanner
 		/// </summary>
 		public static LanguageHelper LangHelper;
 
+		public static MainWindow CurrWindow;
+
 		private static AccessComm _accessDB;
 
 		public const string DBPassword = "Ywc^r72*qX45ndtK";
