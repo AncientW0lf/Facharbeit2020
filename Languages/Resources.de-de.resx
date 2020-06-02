@@ -206,4 +206,10 @@ Nicht erlaubte Zeichen:
 Einfache Anführungszeichen
 Doppelte Anführungszeichen</value>
   </data>
+  <data name="MsgRecipeCreatedWithErrors" xml:space="preserve">
+    <value>Das Rezept konnte nicht vollständig erstellt werden! Bitte editiere die Datenbank manuell und füge die verbleibenden Datensätze hinzu ($1 Anfragen fehlgeschlagen).</value>
+  </data>
+  <data name="MsgRecipeCreated" xml:space="preserve">
+    <value>Rezept erfolgreich gespeichert!</value>
+  </data>
 </root>

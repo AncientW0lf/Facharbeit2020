@@ -164,6 +164,24 @@ namespace Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Recipe saved successfully!.
+        /// </summary>
+        public static string MsgRecipeCreated {
+            get {
+                return ResourceManager.GetString("MsgRecipeCreated", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Recipe could not be fully created! Please edit the database manually and add the remaining data sets ($1 queries failed)..
+        /// </summary>
+        public static string MsgRecipeCreatedWithErrors {
+            get {
+                return ResourceManager.GetString("MsgRecipeCreatedWithErrors", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Name.
         /// </summary>
         public static string NameSimple {

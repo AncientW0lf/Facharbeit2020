@@ -220,4 +220,12 @@ Single quotes
 Double quotes</value>
     <comment>Used when creating a new recipe.</comment>
   </data>
+  <data name="MsgRecipeCreatedWithErrors" xml:space="preserve">
+    <value>Recipe could not be fully created! Please edit the database manually and add the remaining data sets ($1 queries failed).</value>
+    <comment>Used after creating a recipe and at least one query fails.</comment>
+  </data>
+  <data name="MsgRecipeCreated" xml:space="preserve">
+    <value>Recipe saved successfully!</value>
+    <comment>Used after creating a recipe and no queries failed.</comment>
+  </data>
 </root>

@@ -1,7 +1,6 @@
 ﻿using AccessCommunication;
-using BoxLib.Scripts;
 using FoodPlanner.AdditionalWindows;
-using System.Diagnostics;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
@@ -76,9 +75,39 @@ namespace FoodPlanner.Pages
 			if(win.DialogResult != true)
 				return;
 
-			await App.ExecuteQuery(
-				$"insert into Rezepte(Gerichtname, Zubereitung) values('{win.Recipe.Name}', '{win.Recipe.Preparation}')");
-			//TODO: Add queries for Rezeptzutatenliste and Zutaten
+			var allResults = new List<QueryResult>
+			{
+				await App.ExecuteQuery(
+					"insert into Rezepte(Gerichtname, Zubereitung) " +
+					$"values('{win.Recipe.Name}', '{win.Recipe.Preparation}')"),
+				await App.ExecuteQuery("select ID from Rezepte " +
+				                       $"where Gerichtname = '{win.Recipe.Name}' " +
+				                       $"and Zubereitung = '{win.Recipe.Preparation}'")
+			};
+
+			if(allResults[1].ReturnedRows?[0][0] is int newRecipeID)
+			{
+				for (int i = 0; i < win.Recipe.LinkedIngredients.Count; i++)
+				{
+					allResults.Add(await App.ExecuteQuery(
+						"insert into Rezeptzutatenliste(IDRezepte, IDZutaten, Menge, Notiz) " +
+						$"values({newRecipeID}, " +
+						$"{win.Recipe.LinkedIngredients[i].ID}, " +
+						$"'{win.Recipe.LinkedIngredients[i].Amount}', " +
+						$"'{win.Recipe.LinkedIngredients[i].Note}')"));
+				}
+			}
+
+			if(!allResults.All(a => a.Success))
+			{
+				MessageBox.Show(Languages.Resources.MsgRecipeCreatedWithErrors.Replace("$1", allResults.Count(a => !a.Success).ToString()), 
+					Languages.Resources.ErrorSimple, MessageBoxButton.OK, MessageBoxImage.Error);
+			}
+			else
+			{
+				MessageBox.Show(Languages.Resources.MsgRecipeCreated, 
+					Languages.Resources.SuccessSimple, MessageBoxButton.OK, MessageBoxImage.Information);
+			}
 		}
 
 		private async void OpenEditRecipeWin(object sender, RoutedEventArgs e)
