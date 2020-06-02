@@ -35,7 +35,7 @@ namespace FoodPlanner.SQLObj
 			                                                $"where ID = {recipeID}").GetAwaiter().GetResult();
 
 			QueryResult ingreds = App.ExecuteQuery(
-				"select Rezepte_ID, Zutat, Menge, Notiz from ZusammenfassungRezeptzutatenliste " +
+				"select Rezepte_ID, Zutat, Menge, Notiz, Zutaten_ID from ZusammenfassungRezeptzutatenliste " +
 				$"where Rezepte_ID = {recipeID}").GetAwaiter().GetResult();
 
 			if(!recipe.Success || !ingreds.Success)
@@ -49,6 +49,7 @@ namespace FoodPlanner.SQLObj
 			for(int i = 0; i < ingreds.ReturnedRows.Count; i++)
 			{
 				LinkedIngredients.Add(new IngredientInfo(
+					ingreds.ReturnedRows[i][4] as int?,
 					ingreds.ReturnedRows[i][1].ToString(), 
 					ingreds.ReturnedRows[i][2].ToString(), 
 					ingreds.ReturnedRows[i][3].ToString()));

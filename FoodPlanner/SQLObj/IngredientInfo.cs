@@ -13,6 +13,14 @@ namespace FoodPlanner.SQLObj
 
 		public string Note { get; set; }
 
+		public IngredientInfo(int? id, string name, string amount = null, string note = null)
+		{
+			ID = id;
+			Name = name;
+			Amount = amount;
+			Note = note;
+		}
+
 		public IngredientInfo(string name, string amount = null, string note = null)
 		{
 			Name = name;
