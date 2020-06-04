@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using AccessCommunication;
@@ -14,30 +13,38 @@ namespace FoodPlanner
 	{
 		public static async Task<QueryResult[]> InsertNewRecipe(FullRecipe recipe)
 		{
-			var allResults = new List<QueryResult>
+			List<QueryResult> allResults = null;
+			try
 			{
-				await App.ExecuteQuery(
-					"insert into Rezepte(Gerichtname, Zubereitung) " +
-					$"values('{recipe.Name}', '{recipe.Preparation}')"),
-				await App.ExecuteQuery("select ID from Rezepte " +
-				                       $"where Gerichtname = '{recipe.Name}' " +
-				                       $"and Zubereitung = '{recipe.Preparation}'")
-			};
-
-			if(allResults[1].ReturnedRows?[0][0] is int newRecipeID)
-			{
-				for (int i = 0; i < recipe.LinkedIngredients.Count; i++)
+				allResults = new List<QueryResult>
 				{
-					allResults.Add(await App.ExecuteQuery(
-						"insert into Rezeptzutatenliste(IDRezepte, IDZutaten, Menge, Notiz) " +
-						$"values({newRecipeID}, " +
-						$"{recipe.LinkedIngredients[i].ID}, " +
-						$"'{recipe.LinkedIngredients[i].Amount}', " +
-						$"'{recipe.LinkedIngredients[i].Note}')"));
+					await App.ExecuteQuery(
+						"insert into Rezepte(Gerichtname, Zubereitung) " +
+						$"values('{recipe.Name}', '{recipe.Preparation}')"),
+					await App.ExecuteQuery("select ID from Rezepte " +
+					                       $"where Gerichtname = '{recipe.Name}' " +
+					                       $"and Zubereitung = '{recipe.Preparation}'")
+				};
+
+				if(allResults[1].ReturnedRows?[0][0] is int newRecipeID)
+				{
+					for (int i = 0; i < recipe.LinkedIngredients.Count; i++)
+					{
+						allResults.Add(await App.ExecuteQuery(
+							"insert into Rezeptzutatenliste(IDRezepte, IDZutaten, Menge, Notiz) " +
+							$"values({newRecipeID}, " +
+							$"{recipe.LinkedIngredients[i].ID}, " +
+							$"'{recipe.LinkedIngredients[i].Amount}', " +
+							$"'{recipe.LinkedIngredients[i].Note}')"));
+					}
 				}
 			}
+			catch(Exception)
+			{
+				//Ignore
+			}
 
-			return allResults.ToArray();
+			return allResults?.ToArray();
 		}
 
 		public static async Task<QueryResult[]> InsertNewRecipeInteractive(bool msgFinished)
@@ -69,26 +76,34 @@ namespace FoodPlanner
 
 		public static async Task<QueryResult[]> UpdateRecipe(FullRecipe recipe)
 		{
-			var allResults = new List<QueryResult>
+			List<QueryResult> allResults = null;
+			try
 			{
-				await App.ExecuteQuery(
-					"update Rezepte " +
-					$"set Gerichtname = '{recipe.Name}', Zubereitung = '{recipe.Preparation}' " +
-					$"where ID = {recipe.ID}"),
-				await App.ExecuteQuery($"delete from Rezeptzutatenliste where IDRezepte = {recipe.ID}")
-			};
+				allResults = new List<QueryResult>
+				{
+					await App.ExecuteQuery(
+						"update Rezepte " +
+						$"set Gerichtname = '{recipe.Name}', Zubereitung = '{recipe.Preparation}' " +
+						$"where ID = {recipe.ID}"),
+					await App.ExecuteQuery($"delete from Rezeptzutatenliste where IDRezepte = {recipe.ID}")
+				};
 
-			for (int i = 0; i < recipe.LinkedIngredients.Count; i++)
+				for (int i = 0; i < recipe.LinkedIngredients.Count; i++)
+				{
+					allResults.Add(await App.ExecuteQuery(
+						"insert into Rezeptzutatenliste(IDRezepte, IDZutaten, Menge, Notiz) " +
+						$"values({recipe.ID}, " +
+						$"{recipe.LinkedIngredients[i].ID}, " +
+						$"'{recipe.LinkedIngredients[i].Amount}', " +
+						$"'{recipe.LinkedIngredients[i].Note}')"));
+				}
+			}
+			catch(Exception)
 			{
-				allResults.Add(await App.ExecuteQuery(
-					"insert into Rezeptzutatenliste(IDRezepte, IDZutaten, Menge, Notiz) " +
-					$"values({recipe.ID}, " +
-					$"{recipe.LinkedIngredients[i].ID}, " +
-					$"'{recipe.LinkedIngredients[i].Amount}', " +
-					$"'{recipe.LinkedIngredients[i].Note}')"));
+				//Ignore
 			}
 
-			return allResults.ToArray();
+			return allResults?.ToArray();
 		}
 
 		public static async Task<QueryResult[]> UpdateRecipeInteractive(int recipeId, bool msgFinished)
@@ -153,6 +168,77 @@ namespace FoodPlanner
 			}
 
 			return results;
+		}
+
+		public static async Task<QueryResult?> InsertNewIngredient(string ingredientName)
+		{
+			try
+			{
+				return await App.ExecuteQuery(
+					"insert into Zutaten(Zutat) " +
+					$"values('{ingredientName}')");
+			}
+			catch(Exception)
+			{
+				//Ignore
+			}
+
+			return null;
+		}
+
+		public static async Task<QueryResult?> InsertNewIngredientInteractive()
+		{
+			var win = new StringInputWin("New ingredient", "Enter the name of your new ingredient:", "New ingredient");
+			bool? res = win.ShowDialog();
+
+			if(res != true)
+				return null;
+
+			return await InsertNewIngredient(win.Result);
+		}
+
+		public static async Task<QueryResult?> UpdateIngredient(IngredientInfo ingredient)
+		{
+			try
+			{
+				return await App.ExecuteQuery(
+					"update Zutaten " +
+					$"set Zutat = '{ingredient.Name}' " +
+					$"where ID = {ingredient.ID}");
+			}
+			catch(Exception)
+			{
+				//Ignore
+			}
+
+			return null;
+		}
+
+		public static async Task<QueryResult?> UpdateIngredientInteractive(int ingredientId, string oldName = null)
+		{
+			var win = new StringInputWin("Update ingredient", "Enter the new name of the ingredient:", oldName);
+			bool? res = win.ShowDialog();
+
+			if(res != true)
+				return null;
+
+			return await UpdateIngredient(new IngredientInfo(ingredientId, win.Result));
+		}
+
+		public static async Task<QueryResult[]> DeleteIngredient(int ingredientId)
+		{
+			QueryResult result = default, result2 = default;
+			try
+			{
+				result = await App.ExecuteQuery($"delete from Rezeptzutatenliste where IDZutaten = {ingredientId}");
+				result2 = await App.ExecuteQuery($"delete from Zutaten where ID = {ingredientId}");
+			}
+			catch(Exception)
+			{
+				//Ignore
+			}
+
+			return new[] {result, result2};
 		}
 	}
 }
