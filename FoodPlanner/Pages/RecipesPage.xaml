@@ -8,7 +8,9 @@
       xmlns:sqlObj="clr-namespace:FoodPlanner.SQLObj"
       mc:Ignorable="d"
       d:DesignWidth="768"
-      d:DesignHeight="432">
+      d:DesignHeight="432"
+      Loaded="RecipesPage_OnLoaded"
+      IsEnabled="False">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>

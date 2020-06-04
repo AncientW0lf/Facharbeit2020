@@ -1,15 +1,11 @@
-﻿using System;
+﻿using AccessCommunication;
+using FoodPlanner.SQLObj;
 using System.Collections.Generic;
-using System.Text;
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace FoodPlanner.Pages
 {
@@ -21,6 +17,22 @@ namespace FoodPlanner.Pages
 		public IngredsPage()
 		{
 			InitializeComponent();
+		}
+
+		private async void Page_Loaded(object sender, RoutedEventArgs e)
+		{
+			if(IsEnabled)
+				return;
+
+			await Task.Delay(100);
+
+			QueryResult rawIngreds = await App.ExecuteQuery("select ID, Zutat from Zutaten");
+
+			var polishedIngreds = new List<IngredientInfo>();
+			polishedIngreds.AddRange(rawIngreds.ReturnedRows.Select(a => new IngredientInfo((int)a[0], a[1].ToString())));
+			DataContext = new ObservableCollection<IngredientInfo>(polishedIngreds);
+
+			IsEnabled = true;
 		}
 	}
 }

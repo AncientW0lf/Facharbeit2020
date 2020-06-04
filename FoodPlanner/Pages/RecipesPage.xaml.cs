@@ -1,8 +1,6 @@
 ﻿using AccessCommunication;
-using FoodPlanner.AdditionalWindows;
 using FoodPlanner.SQLObj;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
@@ -27,33 +25,38 @@ namespace FoodPlanner.Pages
 			InitializeComponent();
 
 			App.CurrRecipePage = this;
+		}
 
-			Task.Run(async () =>
+		private async void RecipesPage_OnLoaded(object sender, RoutedEventArgs e)
+		{
+			if(IsEnabled)
+				return;
+
+			await Task.Delay(100);
+
+			_recipes = await App.ExecuteQuery(
+				"select ID, Gerichtname, Zubereitung from Rezepte");
+
+			_ingredients = await App.ExecuteQuery(
+				"select Rezepte_ID, Gerichtname, Zutat, Menge, Notiz from ZusammenfassungRezeptzutatenliste");
+
+			ListRecipes.Items.Clear();
+			for(int i = 0; i < _recipes.ReturnedRows.Count; i++)
 			{
-				_recipes = await App.ExecuteQuery(
-					"select ID, Gerichtname, Zubereitung from Rezepte");
+				ListRecipes.Items.Add(new FullRecipe(
+					_recipes.ReturnedRows[i][0] as int?,
+					_recipes.ReturnedRows[i][1].ToString(),
+					_recipes.ReturnedRows[i][2].ToString(),
+					new IngredientInfo[0]));
+			}
 
-				_ingredients = await App.ExecuteQuery(
-					"select Rezepte_ID, Gerichtname, Zutat, Menge, Notiz from ZusammenfassungRezeptzutatenliste");
-
-				await Dispatcher.InvokeAsync(() =>
-				{
-					ListRecipes.Items.Clear();
-					for(int i = 0; i < _recipes.ReturnedRows.Count; i++)
-					{
-						ListRecipes.Items.Add(new FullRecipe(
-							_recipes.ReturnedRows[i][0] as int?, 
-							_recipes.ReturnedRows[i][1].ToString(), 
-							_recipes.ReturnedRows[i][2].ToString(),
-							new IngredientInfo[0]));
-					}
-				});
-			});
+			IsEnabled = true;
 		}
 
 		private void ListRecipes_SelectionChanged(object sender, SelectionChangedEventArgs e)
 		{
-			object[] selected = _recipes.ReturnedRows.FirstOrDefault(a => a[0].Equals(((FullRecipe)e.AddedItems[0])?.ID));
+			object[] selected =
+				_recipes.ReturnedRows.FirstOrDefault(a => a[0].Equals(((FullRecipe)e.AddedItems[0])?.ID));
 			object[][] selectedIngreds = _ingredients.ReturnedRows.Where(a => a[0].Equals(selected?[0])).ToArray();
 
 			if(selected == null)
@@ -66,8 +69,8 @@ namespace FoodPlanner.Pages
 			for(int i = 0; i < selectedIngreds.Length; i++)
 			{
 				ListIngreds.Items.Add(new IngredientInfo(
-					selectedIngreds[i][2].ToString(), 
-					selectedIngreds[i][3].ToString(), 
+					selectedIngreds[i][2].ToString(),
+					selectedIngreds[i][3].ToString(),
 					selectedIngreds[i][4].ToString()));
 			}
 		}
@@ -80,10 +83,11 @@ namespace FoodPlanner.Pages
 		}
 
 		private async void OpenEditRecipeWin(object sender, RoutedEventArgs e)
-		{			
-			object[] selected = _recipes.ReturnedRows.FirstOrDefault(a => a[0].Equals(((FullRecipe)ListRecipes.SelectedItem)?.ID));
+		{
+			object[] selected =
+				_recipes.ReturnedRows.FirstOrDefault(a => a[0].Equals(((FullRecipe)ListRecipes.SelectedItem)?.ID));
 
-			if(selected == null) 
+			if(selected == null)
 				return;
 
 			await SqlHelper.UpdateRecipeInteractive((int)selected[0], true);
@@ -93,7 +97,8 @@ namespace FoodPlanner.Pages
 
 		private async void DeleteRecipe(object sender, RoutedEventArgs e)
 		{
-			object[] selected = _recipes.ReturnedRows.FirstOrDefault(a => a[0].Equals(((FullRecipe)ListRecipes.SelectedItem)?.ID));
+			object[] selected =
+				_recipes.ReturnedRows.FirstOrDefault(a => a[0].Equals(((FullRecipe)ListRecipes.SelectedItem)?.ID));
 
 			if(selected == null)
 				return;
