@@ -229,4 +229,7 @@ Betroffene Zeilen: $3</value>
   <data name="WeekPlanSimple" xml:space="preserve">
     <value>Wochenplan</value>
   </data>
+  <data name="CancelSimple" xml:space="preserve">
+    <value>Abbrechen</value>
+  </data>
 </root>

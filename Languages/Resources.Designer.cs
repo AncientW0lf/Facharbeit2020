@@ -79,6 +79,15 @@ namespace Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cancel.
+        /// </summary>
+        public static string CancelSimple {
+            get {
+                return ResourceManager.GetString("CancelSimple", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Change language.
         /// </summary>
         public static string ChangeLangSimple {
