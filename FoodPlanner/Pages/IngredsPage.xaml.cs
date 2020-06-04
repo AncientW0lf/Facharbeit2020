@@ -1,4 +1,5 @@
-﻿using AccessCommunication;
+﻿using System;
+using AccessCommunication;
 using FoodPlanner.SQLObj;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -33,7 +34,7 @@ namespace FoodPlanner.Pages
 
 			var polishedIngreds = new List<IngredientInfo>();
 			polishedIngreds.AddRange(rawIngreds.ReturnedRows.Select(a => new IngredientInfo((int)a[0], a[1].ToString())));
-			DataContext = new ObservableCollection<IngredientInfo>(polishedIngreds);
+			DataContext = new ObservableCollection<IngredientInfo>(polishedIngreds.OrderBy(a => a.Name));
 
 			IsEnabled = true;
 		}
@@ -74,6 +75,29 @@ namespace FoodPlanner.Pages
 			}
 
 			DataContext = new ObservableCollection<IngredientInfo>(currItems.OrderBy(a => a.Name));
+		}
+
+		private async void AddIngredient(object sender, RoutedEventArgs e)
+		{
+			await SqlHelper.InsertNewIngredientInteractive(true);
+
+			NavigationService?.Refresh();
+		}
+
+		private async void RemoveIngredient(object sender, RoutedEventArgs e)
+		{
+			IngredientInfo[] selected = ((IEnumerable<IngredientInfo>)LBoxIngreds.SelectedItems).ToArray();
+
+			for(int i = 0; i < selected.Length; i++)
+			{
+				await SqlHelper.DeleteIngredientInteractive(
+					selected[i].Name,
+					selected[i].ID 
+					?? throw new ArgumentException($"ID of ingredient \"{selected[i].Name}\" not present!"), 
+					true);
+			}
+
+			NavigationService?.Refresh();
 		}
 	}
 }

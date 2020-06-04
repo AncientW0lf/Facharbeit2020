@@ -25,7 +25,7 @@
         <TextBlock Text="Search:" Margin="5"/>
         <TextBox Grid.Column="1" VerticalAlignment="Center" KeyUp="UpdateSearch" Name="TxtBoxSearch"/>
 
-        <ListBox Grid.Row="1" Grid.ColumnSpan="2" SelectionMode="Extended" ItemsSource="{Binding}">
+        <ListBox Grid.Row="1" Grid.ColumnSpan="2" SelectionMode="Extended" ItemsSource="{Binding}" Name="LBoxIngreds">
             <ListBox.ItemTemplate>
                 <DataTemplate DataType="sqlObj:IngredientInfo">
                     <TextBlock Text="{Binding Name}"/>
@@ -34,8 +34,8 @@
         </ListBox>
 
         <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.ColumnSpan="2" HorizontalAlignment="Center" Margin="5,5,5,0">
-            <Button Content="Add new ingredient" Margin="0,0,5,0"/>
-            <Button Content="Remove selected ingredient(s)" Margin="5,0,0,0"/>
+            <Button Content="Add new ingredient" Margin="0,0,5,0" Click="AddIngredient"/>
+            <Button Content="Remove selected ingredient(s)" Margin="5,0,0,0" Click="RemoveIngredient"/>
         </StackPanel>
     </Grid>
 </Page>

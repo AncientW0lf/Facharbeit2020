@@ -1,6 +1,5 @@
 ﻿using AccessCommunication;
 using FoodPlanner.SQLObj;
-using System;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
@@ -41,13 +40,20 @@ namespace FoodPlanner.Pages
 				"select Rezepte_ID, Gerichtname, Zutat, Menge, Notiz from ZusammenfassungRezeptzutatenliste");
 
 			ListRecipes.Items.Clear();
+			var rawArray = new FullRecipe[_recipes.ReturnedRows.Count];
 			for(int i = 0; i < _recipes.ReturnedRows.Count; i++)
 			{
-				ListRecipes.Items.Add(new FullRecipe(
+				rawArray[i] = new FullRecipe(
 					_recipes.ReturnedRows[i][0] as int?,
 					_recipes.ReturnedRows[i][1].ToString(),
 					_recipes.ReturnedRows[i][2].ToString(),
-					new IngredientInfo[0]));
+					new IngredientInfo[0]);
+			}
+
+			FullRecipe[] orderedArray = rawArray.OrderBy(a => a.Name).ToArray();
+			for(int i = 0; i < orderedArray.Length; i++)
+			{
+				ListRecipes.Items.Add(orderedArray[i]);
 			}
 
 			IsEnabled = true;
