@@ -26,6 +26,8 @@ namespace FoodPlanner.Pages
 		{
 			InitializeComponent();
 
+			App.CurrRecipePage = this;
+
 			Task.Run(async () =>
 			{
 				_recipes = await App.ExecuteQuery(

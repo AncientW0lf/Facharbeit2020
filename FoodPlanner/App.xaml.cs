@@ -10,6 +10,7 @@ using System.Windows;
 using System.Windows.Threading;
 using BoxLib.Objects;
 using BoxLib.Static;
+using FoodPlanner.Pages;
 
 namespace FoodPlanner
 {
@@ -24,6 +25,8 @@ namespace FoodPlanner
 		public static LanguageHelper LangHelper;
 
 		public static MainWindow CurrWindow;
+
+		public static RecipesPage CurrRecipePage;
 
 		private static AccessComm _accessDB;
 

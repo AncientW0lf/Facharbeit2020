@@ -18,13 +18,20 @@ namespace FoodPlanner.Pages
 			InitializeComponent();
 		}
 
-		private void CreateRecipeLink(object sender, RoutedEventArgs e)
+		/// <summary>
+		/// Opens the recipe creation window and switches to the recipe tab.
+		/// </summary>
+		private async void GoToCreateRecipe(object sender, RoutedEventArgs e)
 		{
 			MainWindow parentWin = App.CurrWindow;
 			if(parentWin != null)
 			{
 				parentWin.MainTabs.SelectedIndex = 2;
 			}
+
+			await SqlHelper.InsertNewRecipeInteractive(true);
+			
+			App.CurrRecipePage?.NavigationService?.Refresh();
 		}
 	}
 }
