@@ -238,6 +238,15 @@ namespace Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Notes.
+        /// </summary>
+        public static string NotesSimple {
+            get {
+                return ResourceManager.GetString("NotesSimple", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Options.
         /// </summary>
         public static string OptionsSimple {
@@ -274,7 +283,7 @@ namespace Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Here is a list of all recipes that you have made thus far:.
+        ///   Looks up a localized string similar to Recipes.
         /// </summary>
         public static string RecipeList {
             get {
@@ -283,7 +292,7 @@ namespace Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Recipe Name:.
+        ///   Looks up a localized string similar to Recipe Name.
         /// </summary>
         public static string RecipeName {
             get {
@@ -292,7 +301,7 @@ namespace Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Recipe Preparation:.
+        ///   Looks up a localized string similar to Recipe Preparation.
         /// </summary>
         public static string RecipePrep {
             get {

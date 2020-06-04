@@ -155,13 +155,13 @@
     <value>Die verbundene Datenbank konnte nicht gefunden werden! Manche Funktionen könnten nicht funktionieren oder sogar zum Programmabsturz führen.</value>
   </data>
   <data name="RecipeList" xml:space="preserve">
-    <value>Hier ist eine Liste aller Rezepte welche du bereits erstellt hast:</value>
+    <value>Rezepte</value>
   </data>
   <data name="RecipeName" xml:space="preserve">
-    <value>Rezeptname:</value>
+    <value>Rezeptname</value>
   </data>
   <data name="RecipePrep" xml:space="preserve">
-    <value>Rezeptzubereitung:</value>
+    <value>Rezeptzubereitung</value>
   </data>
   <data name="RecipeCreate" xml:space="preserve">
     <value>Rezept erstellen</value>
@@ -222,5 +222,8 @@ Betroffene Zeilen: $3</value>
   </data>
   <data name="MsgRecipeUpdatedWithErrors" xml:space="preserve">
     <value>Das Rezept konnte nicht vollständig bearbeitet werden! Bitte editiere die Datenbank manuell und update die verbleibenden Datensätze ($1 Anfragen fehlgeschlagen).</value>
+  </data>
+  <data name="NotesSimple" xml:space="preserve">
+    <value>Notizen</value>
   </data>
 </root>

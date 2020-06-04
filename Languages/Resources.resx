@@ -159,15 +159,15 @@
     <comment>Displayed when the DB file is missing.</comment>
   </data>
   <data name="RecipeList" xml:space="preserve">
-    <value>Here is a list of all recipes that you have made thus far:</value>
+    <value>Recipes</value>
     <comment>Used in the recipe tab.</comment>
   </data>
   <data name="RecipeName" xml:space="preserve">
-    <value>Recipe Name:</value>
+    <value>Recipe Name</value>
     <comment>Used in the recipe tab.</comment>
   </data>
   <data name="RecipePrep" xml:space="preserve">
-    <value>Recipe Preparation:</value>
+    <value>Recipe Preparation</value>
     <comment>Used in the recipe tab.</comment>
   </data>
   <data name="RecipeCreate" xml:space="preserve">
@@ -240,5 +240,8 @@ Affected rows: $3</value>
   <data name="MsgRecipeUpdatedWithErrors" xml:space="preserve">
     <value>Recipe could not be fully updated! Please edit the database manually and update the remaining data sets ($1 queries failed).</value>
     <comment>Used after updating a recipe and at least one query fails.</comment>
+  </data>
+  <data name="NotesSimple" xml:space="preserve">
+    <value>Notes</value>
   </data>
 </root>
