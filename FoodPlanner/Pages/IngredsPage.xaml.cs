@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using AccessCommunication;
 using FoodPlanner.SQLObj;
 using System.Collections.Generic;
@@ -86,14 +87,15 @@ namespace FoodPlanner.Pages
 
 		private async void RemoveIngredient(object sender, RoutedEventArgs e)
 		{
-			IngredientInfo[] selected = ((IEnumerable<IngredientInfo>)LBoxIngreds.SelectedItems).ToArray();
+			IList selected = LBoxIngreds.SelectedItems;
 
-			for(int i = 0; i < selected.Length; i++)
+			for(int i = 0; i < selected.Count; i++)
 			{
 				await SqlHelper.DeleteIngredientInteractive(
-					selected[i].Name,
-					selected[i].ID 
-					?? throw new ArgumentException($"ID of ingredient \"{selected[i].Name}\" not present!"), 
+					((IngredientInfo)selected[i])?.Name,
+					((IngredientInfo)selected[i])?.ID 
+					?? throw new ArgumentException(
+						$"ID of ingredient \"{((IngredientInfo)selected[i])?.Name}\" not present!"), 
 					true);
 			}
 
