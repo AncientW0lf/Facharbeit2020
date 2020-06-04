@@ -174,43 +174,56 @@ namespace AccessCommConsole
 		/// <param name="communicator">The <see cref="AccessComm"/> to execute the query in.</param>
 		private void QueryDB(ref AccessComm communicator)
 		{
-			//Informs the user that a database has to be opened for this command to work
-			if(communicator?.IsDisposed == null || communicator?.IsDisposed == true)
+			while(true)
 			{
-				Console.WriteLine("Please open a database first to execute queries.");
-				return;
-			}
+				//Informs the user that a database has to be opened for this command to work
+				if(communicator?.IsDisposed == null || communicator?.IsDisposed == true)
+				{
+					Console.WriteLine("Please open a database first to execute queries.");
+					break;
+				}
 
-			//Reads the user query
-			Console.Write("Query: ");
-			string query = Console.ReadLine();
+				Console.WriteLine("Write \"quit\" to return and quit entering SQL queries.");
 
-			//Tries to execute the query
-			Console.WriteLine("Executing query...");
-			var res = new QueryResult();
-			try
-			{
-				res = communicator.ExecuteQuery(query).GetAwaiter().GetResult();
-			}
-			catch(Exception e)
-			{
-				Console.WriteLine(e.Message);
-			}
+				//Reads the user query
+				Console.Write("Query: ");
+				string query = Console.ReadLine()?.Trim();
 
-			//Outputs if the query was successful and how many database records were affected
-			Console.WriteLine($"Query executed. Status: {(res.Success ? "Success" : "Failed")}\n" +
-			                  $"Records affected: {res.RecordsAffected}");
+				if(query?.ToLowerInvariant().Equals("quit") ?? false) break;
 
-			//Checks if the query returned some data
-			if(res.ReturnedRows?.Count <= 0 || res.ReturnedRows == null) return;
+				//Tries to execute the query
+				Console.WriteLine("Executing query...");
+				var res = new QueryResult();
+				try
+				{
+					res = communicator.ExecuteQuery(query).GetAwaiter().GetResult();
+				}
+				catch(Exception e)
+				{
+					Console.WriteLine(e.Message);
+				}
 
-			//Displays the returned data
-			Console.WriteLine();
-			Console.WriteLine("Query returned data:");
-			Console.WriteLine(string.Join(", ", res.ColumnNames));
-			for(int y = 0; y < res.ReturnedRows.Count; y++)
-			{
-				Console.WriteLine(string.Join(", ", res.ReturnedRows[y]));
+				//Outputs if the query was successful and how many database records were affected
+				Console.WriteLine($"Query executed. Status: {(res.Success ? "Success" : "Failed")}\n" + 
+				                  $"Records affected: {res.RecordsAffected}");
+
+				//Checks if the query returned some data
+				if(res.ReturnedRows?.Count <= 0 || res.ReturnedRows == null)
+				{
+					Console.WriteLine();
+					continue;
+				}
+
+				//Displays the returned data
+				Console.WriteLine();
+				Console.WriteLine("Query returned data:");
+				Console.WriteLine(string.Join(", ", res.ColumnNames));
+				for(int y = 0; y < res.ReturnedRows.Count; y++)
+				{
+					Console.WriteLine(string.Join(", ", res.ReturnedRows[y]));
+				}
+
+				Console.WriteLine();
 			}
 		}
 	}
