@@ -49,7 +49,7 @@ namespace FoodPlanner
 
 		public static async Task<QueryResult[]> InsertNewRecipeInteractive(bool msgFinished)
 		{
-			var win = new CreateRecipeWin();
+			var win = new CreateRecipeWin {Owner = App.CurrWindow};
 			win.ShowDialog();
 
 			if(win.DialogResult != true)
@@ -108,7 +108,7 @@ namespace FoodPlanner
 
 		public static async Task<QueryResult[]> UpdateRecipeInteractive(int recipeId, bool msgFinished)
 		{
-			var win = new CreateRecipeWin(recipeId);
+			var win = new CreateRecipeWin(recipeId) {Owner = App.CurrWindow};
 			win.ShowDialog();
 
 			if(win.DialogResult != true)
@@ -188,7 +188,10 @@ namespace FoodPlanner
 
 		public static async Task<QueryResult?> InsertNewIngredientInteractive(bool msgFinished)
 		{
-			var win = new StringInputWin("New ingredient", "Enter the name of your new ingredient:", "New ingredient");
+			var win = new StringInputWin("New ingredient", "Enter the name of your new ingredient:", "New ingredient")
+			{
+				Owner = App.CurrWindow
+			};
 			bool? res = win.ShowDialog();
 
 			if(res != true)
@@ -231,7 +234,10 @@ namespace FoodPlanner
 
 		public static async Task<QueryResult?> UpdateIngredientInteractive(int ingredientId, string oldName, bool msgFinished)
 		{
-			var win = new StringInputWin("Update ingredient", "Enter the new name of the ingredient:", oldName);
+			var win = new StringInputWin("Update ingredient", "Enter the new name of the ingredient:", oldName)
+			{
+				Owner = App.CurrWindow
+			};
 			bool? res = win.ShowDialog();
 
 			if(res != true)
