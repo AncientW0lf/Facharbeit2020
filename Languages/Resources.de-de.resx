@@ -226,4 +226,7 @@ Betroffene Zeilen: $3</value>
   <data name="NotesSimple" xml:space="preserve">
     <value>Notizen</value>
   </data>
+  <data name="WeekPlanSimple" xml:space="preserve">
+    <value>Wochenplan</value>
+  </data>
 </root>

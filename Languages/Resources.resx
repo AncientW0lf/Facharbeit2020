@@ -244,4 +244,7 @@ Affected rows: $3</value>
   <data name="NotesSimple" xml:space="preserve">
     <value>Notes</value>
   </data>
+  <data name="WeekPlanSimple" xml:space="preserve">
+    <value>Week Plan</value>
+  </data>
 </root>

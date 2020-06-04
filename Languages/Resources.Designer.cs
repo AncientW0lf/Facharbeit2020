@@ -337,6 +337,15 @@ namespace Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Week Plan.
+        /// </summary>
+        public static string WeekPlanSimple {
+            get {
+                return ResourceManager.GetString("WeekPlanSimple", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Welcome.
         /// </summary>
         public static string WelcomeSimple {
