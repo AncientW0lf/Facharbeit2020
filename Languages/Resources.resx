@@ -250,4 +250,20 @@ Affected rows: $3</value>
   <data name="CancelSimple" xml:space="preserve">
     <value>Cancel</value>
   </data>
+  <data name="DelIngredConfirm" xml:space="preserve">
+    <value>Are you sure you want to delete the ingredient "$1"? This operation cannot be undone!</value>
+    <comment>Used when trying to delete an ingredient.</comment>
+  </data>
+  <data name="MsgIngredientCreatedWithErrors" xml:space="preserve">
+    <value>Ingredient could not be fully created! Please edit the database manually if this problem persists.</value>
+    <comment>Used after creating an ingredient and at least one query fails.</comment>
+  </data>
+  <data name="MsgIngredientCreated" xml:space="preserve">
+    <value>Ingredient saved successfully!</value>
+    <comment>Used after creating an ingredient and no queries failed.</comment>
+  </data>
+  <data name="MsgIngredientUpdatedWithErrors" xml:space="preserve">
+    <value>Ingredient could not be fully updated! Please edit the database manually if this problem persists.</value>
+    <comment>Used after updating an ingredient and at least one query fails.</comment>
+  </data>
 </root>

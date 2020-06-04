@@ -106,6 +106,15 @@ namespace Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to delete the ingredient &quot;$1&quot;? This operation cannot be undone!.
+        /// </summary>
+        public static string DelIngredConfirm {
+            get {
+                return ResourceManager.GetString("DelIngredConfirm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Executed $1 deletion queries.
         ///Success: $2
         ///Affected rows: $3.
@@ -176,6 +185,33 @@ namespace Languages {
         public static string MsgDBNotFound {
             get {
                 return ResourceManager.GetString("MsgDBNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ingredient saved successfully!.
+        /// </summary>
+        public static string MsgIngredientCreated {
+            get {
+                return ResourceManager.GetString("MsgIngredientCreated", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ingredient could not be fully created! Please edit the database manually if this problem persists..
+        /// </summary>
+        public static string MsgIngredientCreatedWithErrors {
+            get {
+                return ResourceManager.GetString("MsgIngredientCreatedWithErrors", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ingredient could not be fully updated! Please edit the database manually if this problem persists..
+        /// </summary>
+        public static string MsgIngredientUpdatedWithErrors {
+            get {
+                return ResourceManager.GetString("MsgIngredientUpdatedWithErrors", resourceCulture);
             }
         }
         

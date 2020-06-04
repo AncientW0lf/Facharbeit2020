@@ -232,4 +232,16 @@ Betroffene Zeilen: $3</value>
   <data name="CancelSimple" xml:space="preserve">
     <value>Abbrechen</value>
   </data>
+  <data name="DelIngredConfirm" xml:space="preserve">
+    <value>Bist du dir sicher, dass du die Zutat "$1" löschen willst? Diese Operation kann nicht rückgängig gemacht werden!</value>
+  </data>
+  <data name="MsgIngredientCreatedWithErrors" xml:space="preserve">
+    <value>Die Zutat konnte nicht gespeichert werden! Bitte editiere die Datenbank manuell wenn das Problem bestehen bleibt.</value>
+  </data>
+  <data name="MsgIngredientCreated" xml:space="preserve">
+    <value>Zutat erfolgreich gespeichert!</value>
+  </data>
+  <data name="MsgIngredientUpdatedWithErrors" xml:space="preserve">
+    <value>Die Zutat konnte nicht bearbeitet werden. Bitte editiere die Datenbank manuell wenn das Problem bestehen bleibt.</value>
+  </data>
 </root>

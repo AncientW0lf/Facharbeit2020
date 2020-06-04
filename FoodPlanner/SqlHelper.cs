@@ -28,7 +28,7 @@ namespace FoodPlanner
 
 				if(allResults[1].ReturnedRows?[0][0] is int newRecipeID)
 				{
-					for (int i = 0; i < recipe.LinkedIngredients.Count; i++)
+					for(int i = 0; i < recipe.LinkedIngredients.Count; i++)
 					{
 						allResults.Add(await App.ExecuteQuery(
 							"insert into Rezeptzutatenliste(IDRezepte, IDZutaten, Menge, Notiz) " +
@@ -62,12 +62,12 @@ namespace FoodPlanner
 			if(!allResults.All(a => a.Success))
 			{
 				MessageBox.Show(Languages.Resources.MsgRecipeCreatedWithErrors
-						.Replace("$1", allResults.Count(a => !a.Success).ToString()), 
+						.Replace("$1", allResults.Count(a => !a.Success).ToString()),
 					Languages.Resources.ErrorSimple, MessageBoxButton.OK, MessageBoxImage.Error);
 			}
 			else
 			{
-				MessageBox.Show(Languages.Resources.MsgRecipeCreated, 
+				MessageBox.Show(Languages.Resources.MsgRecipeCreated,
 					Languages.Resources.SuccessSimple, MessageBoxButton.OK, MessageBoxImage.Information);
 			}
 
@@ -88,7 +88,7 @@ namespace FoodPlanner
 					await App.ExecuteQuery($"delete from Rezeptzutatenliste where IDRezepte = {recipe.ID}")
 				};
 
-				for (int i = 0; i < recipe.LinkedIngredients.Count; i++)
+				for(int i = 0; i < recipe.LinkedIngredients.Count; i++)
 				{
 					allResults.Add(await App.ExecuteQuery(
 						"insert into Rezeptzutatenliste(IDRezepte, IDZutaten, Menge, Notiz) " +
@@ -118,15 +118,15 @@ namespace FoodPlanner
 
 			if(!msgFinished) return allResults;
 
-			if (!allResults.All(a => a.Success))
+			if(!allResults.All(a => a.Success))
 			{
 				MessageBox.Show(Languages.Resources.MsgRecipeUpdatedWithErrors
-						.Replace("$1", allResults.Count(a => !a.Success).ToString()), 
+						.Replace("$1", allResults.Count(a => !a.Success).ToString()),
 					Languages.Resources.ErrorSimple, MessageBoxButton.OK, MessageBoxImage.Error);
 			}
 			else
 			{
-				MessageBox.Show(Languages.Resources.MsgRecipeCreated, 
+				MessageBox.Show(Languages.Resources.MsgRecipeCreated,
 					Languages.Resources.SuccessSimple, MessageBoxButton.OK, MessageBoxImage.Information);
 			}
 
@@ -152,8 +152,8 @@ namespace FoodPlanner
 		public static async Task<QueryResult[]> DeleteRecipeInteractive(string recipeName, int recipeId, bool msgFinished)
 		{
 			if(MessageBox.Show(Languages.Resources.DelRecipeConfirm.Replace("$1", recipeName),
-				   Languages.Resources.ConfirmSimple, MessageBoxButton.YesNo, MessageBoxImage.Question,
-				   MessageBoxResult.No) == MessageBoxResult.No)
+				Languages.Resources.ConfirmSimple, MessageBoxButton.YesNo, MessageBoxImage.Question,
+				MessageBoxResult.No) == MessageBoxResult.No)
 				return null;
 
 			QueryResult[] results = await DeleteRecipe(recipeId);
@@ -161,10 +161,10 @@ namespace FoodPlanner
 			if(msgFinished)
 			{
 				MessageBox.Show(Languages.Resources.DelQueriesInfo
-					.Replace("$1", "2")
-					.Replace("$2", (results[0].Success && results[1].Success).ToString(Languages.Resources.Culture))
-					.Replace("$3", (results[0].RecordsAffected + results[1].RecordsAffected).ToString()),
-				Languages.Resources.InfoSimple, MessageBoxButton.OK, MessageBoxImage.Information);
+						.Replace("$1", "2")
+						.Replace("$2", (results[0].Success && results[1].Success).ToString(Languages.Resources.Culture))
+						.Replace("$3", (results[0].RecordsAffected + results[1].RecordsAffected).ToString()),
+					Languages.Resources.InfoSimple, MessageBoxButton.OK, MessageBoxImage.Information);
 			}
 
 			return results;
@@ -186,7 +186,7 @@ namespace FoodPlanner
 			return null;
 		}
 
-		public static async Task<QueryResult?> InsertNewIngredientInteractive()
+		public static async Task<QueryResult?> InsertNewIngredientInteractive(bool msgFinished)
 		{
 			var win = new StringInputWin("New ingredient", "Enter the name of your new ingredient:", "New ingredient");
 			bool? res = win.ShowDialog();
@@ -194,7 +194,22 @@ namespace FoodPlanner
 			if(res != true)
 				return null;
 
-			return await InsertNewIngredient(win.Result);
+			QueryResult? result = await InsertNewIngredient(win.Result);
+
+			if(!msgFinished) return result;
+
+			if(!result?.Success ?? false)
+			{
+				MessageBox.Show(Languages.Resources.MsgIngredientCreatedWithErrors,
+					Languages.Resources.ErrorSimple, MessageBoxButton.OK, MessageBoxImage.Error);
+			}
+			else
+			{
+				MessageBox.Show(Languages.Resources.MsgIngredientCreated,
+					Languages.Resources.SuccessSimple, MessageBoxButton.OK, MessageBoxImage.Information);
+			}
+
+			return result;
 		}
 
 		public static async Task<QueryResult?> UpdateIngredient(IngredientInfo ingredient)
@@ -214,7 +229,7 @@ namespace FoodPlanner
 			return null;
 		}
 
-		public static async Task<QueryResult?> UpdateIngredientInteractive(int ingredientId, string oldName = null)
+		public static async Task<QueryResult?> UpdateIngredientInteractive(int ingredientId, string oldName, bool msgFinished)
 		{
 			var win = new StringInputWin("Update ingredient", "Enter the new name of the ingredient:", oldName);
 			bool? res = win.ShowDialog();
@@ -222,7 +237,22 @@ namespace FoodPlanner
 			if(res != true)
 				return null;
 
-			return await UpdateIngredient(new IngredientInfo(ingredientId, win.Result));
+			QueryResult? result = await UpdateIngredient(new IngredientInfo(ingredientId, win.Result));
+
+			if(!msgFinished) return result;
+
+			if(!result?.Success ?? false)
+			{
+				MessageBox.Show(Languages.Resources.MsgIngredientUpdatedWithErrors,
+					Languages.Resources.ErrorSimple, MessageBoxButton.OK, MessageBoxImage.Error);
+			}
+			else
+			{
+				MessageBox.Show(Languages.Resources.MsgIngredientCreated,
+					Languages.Resources.SuccessSimple, MessageBoxButton.OK, MessageBoxImage.Information);
+			}
+
+			return result;
 		}
 
 		public static async Task<QueryResult[]> DeleteIngredient(int ingredientId)
@@ -239,6 +269,27 @@ namespace FoodPlanner
 			}
 
 			return new[] {result, result2};
+		}
+
+		public static async Task<QueryResult[]> DeleteIngredientInteractive(string ingredientName, int ingredientId, bool msgFinished)
+		{
+			if(MessageBox.Show(Languages.Resources.DelIngredConfirm.Replace("$1", ingredientName),
+				Languages.Resources.ConfirmSimple, MessageBoxButton.YesNo, MessageBoxImage.Question,
+				MessageBoxResult.No) == MessageBoxResult.No)
+				return null;
+
+			QueryResult[] results = await DeleteIngredient(ingredientId);
+
+			if(msgFinished)
+			{
+				MessageBox.Show(Languages.Resources.DelQueriesInfo
+						.Replace("$1", "2")
+						.Replace("$2", (results[0].Success && results[1].Success).ToString(Languages.Resources.Culture))
+						.Replace("$3", (results[0].RecordsAffected + results[1].RecordsAffected).ToString()),
+					Languages.Resources.InfoSimple, MessageBoxButton.OK, MessageBoxImage.Information);
+			}
+
+			return results;
 		}
 	}
 }
