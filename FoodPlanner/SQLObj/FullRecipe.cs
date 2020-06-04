@@ -46,7 +46,7 @@ namespace FoodPlanner.SQLObj
 			Preparation = recipe.ReturnedRows[0][2].ToString();
 
 			LinkedIngredients = new ObservableCollection<IngredientInfo>();
-			for(int i = 0; i < ingreds.ReturnedRows.Count; i++)
+			for(int i = 0; i < (ingreds.ReturnedRows?.Count ?? 0); i++)
 			{
 				LinkedIngredients.Add(new IngredientInfo(
 					ingreds.ReturnedRows[i][4] as int?,
