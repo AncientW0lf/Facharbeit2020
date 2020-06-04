@@ -65,13 +65,10 @@ namespace FoodPlanner.Pages
 			ListIngreds.Items.Clear();
 			for(int i = 0; i < selectedIngreds.Length; i++)
 			{
-				ListIngreds.Items.Add(new ListBoxItem
-				{
-					Content = $"{selectedIngreds[i][3]} {selectedIngreds[i][2]}"
-				});
-
-				if(!string.IsNullOrWhiteSpace(selectedIngreds[i][4].ToString()))
-					((ListBoxItem)ListIngreds.Items[^1]).ToolTip = selectedIngreds[i][4];
+				ListIngreds.Items.Add(new IngredientInfo(
+					selectedIngreds[i][2].ToString(), 
+					selectedIngreds[i][3].ToString(), 
+					selectedIngreds[i][4].ToString()));
 			}
 		}
 

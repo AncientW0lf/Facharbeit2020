@@ -51,11 +51,31 @@
         <Grid Grid.Row="2" Grid.Column="1" Margin="2,5">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="Auto"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
             <TextBlock Text="{x:Static lang:Resources.IngredientsSimple}" Margin="0,0,0,2"/>
-            <ListBox Name="ListIngreds" Grid.Row="1"/>
+            <ListBox Name="ListIngreds" Grid.Row="1" Margin="0,0,0,5">
+                <ListBox.ItemTemplate>
+                    <DataTemplate DataType="sqlObj:IngredientInfo">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Amount}"/>
+                            <TextBlock Text=" "/>
+                            <TextBlock Text="{Binding Name}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+
+            <TextBlock Text="{x:Static lang:Resources.NotesSimple}" Margin="0,0,0,2" Grid.Row="2"/>
+            <TextBox Name="TxtBoxIngredNotes"
+                     IsReadOnly="True"
+                     TextWrapping="Wrap" 
+                     VerticalScrollBarVisibility="Auto"
+                     Grid.Row="3" 
+                     Text="{Binding SelectedItem.Note, ElementName=ListIngreds, Mode=OneWay}"/>
         </Grid>
 
         <StackPanel Orientation="Horizontal" Grid.Row="3" Grid.ColumnSpan="2" HorizontalAlignment="Center">
