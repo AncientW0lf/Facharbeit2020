@@ -174,6 +174,7 @@ namespace AccessCommConsole
 		/// <param name="communicator">The <see cref="AccessComm"/> to execute the query in.</param>
 		private void QueryDB(ref AccessComm communicator)
 		{
+			//Loops as long as the user doesn't type "quit"
 			while(true)
 			{
 				//Informs the user that a database has to be opened for this command to work
@@ -189,6 +190,7 @@ namespace AccessCommConsole
 				Console.Write("Query: ");
 				string query = Console.ReadLine()?.Trim();
 
+				//Returns to caller
 				if(query?.ToLowerInvariant().Equals("quit") ?? false) break;
 
 				//Tries to execute the query

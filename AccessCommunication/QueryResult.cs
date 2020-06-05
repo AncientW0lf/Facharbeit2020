@@ -29,6 +29,10 @@ namespace AccessCommunication
         /// </summary>
         public List<object[]> ReturnedRows { get; internal set; }
 
+        /// <summary>
+        /// Contains an array of returned data columns, if available.
+        /// Makes identifying <see cref="ReturnedRows"/> easier.
+        /// </summary>
         public string[] ColumnNames { get; internal set; }
 
         /// <summary>

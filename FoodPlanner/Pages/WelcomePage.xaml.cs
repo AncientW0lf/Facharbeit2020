@@ -23,14 +23,17 @@ namespace FoodPlanner.Pages
 		/// </summary>
 		private async void GoToCreateRecipe(object sender, RoutedEventArgs e)
 		{
+			//Switches the current tab
 			MainWindow parentWin = App.CurrWindow;
 			if(parentWin != null)
 			{
 				parentWin.MainTabs.SelectedIndex = 2;
 			}
 
+			//Opens the recipe creation window
 			await SqlHelper.InsertNewRecipeInteractive(true);
 			
+			//Refreshes the recipe page
 			App.CurrRecipePage?.NavigationService?.Refresh();
 		}
 	}

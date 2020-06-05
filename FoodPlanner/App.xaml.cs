@@ -24,21 +24,35 @@ namespace FoodPlanner
 		/// </summary>
 		public static LanguageHelper LangHelper;
 
+		/// <summary>
+		/// The current main window. May be null if it isn't initialized yet.
+		/// </summary>
 		public static MainWindow CurrWindow;
 
+		/// <summary>
+		/// The recipe page. May be null if it isn't initialized yet.
+		/// </summary>
 		public static RecipesPage CurrRecipePage;
 
+		/// <summary>
+		/// The underlying MS Access communicator. Used for all queries in this application.
+		/// </summary>
 		private static AccessComm _accessDB;
 
+		/// <summary>
+		/// The password used for the database.
+		/// </summary>
 		public const string DBPassword = "Ywc^r72*qX45ndtK";
 
 		/// <summary>
-		/// Creates a new <see cref="LangHelper"/> and logs the selected language.
+		/// Initializes all necessary objects.
 		/// </summary>
 		private void App_OnStartup(object sender, StartupEventArgs e)
 		{
+			//Creates a new language helper to change languages easily
 			LangHelper = new LanguageHelper(typeof(Languages.Resources), CultureInfo.GetCultureInfo("en-us"));
 
+			//Tries to load the saved language from a config file
 			CultureInfo savedLang = null;
 			try
 			{
@@ -51,12 +65,16 @@ namespace FoodPlanner
 
 			savedLang ??= CultureInfo.InstalledUICulture;
 
+			//Applies the default/loaded language
 			LangHelper.ChangeLanguage(savedLang);
+
+			//Logs the applied language
 			bool isSupported = LangHelper.GetSupportedLanguages()
 				.FirstOrDefault(a => a.Equals(savedLang)) != null;
 			Log.Write($"Selected language: {savedLang}", 1, TraceEventType.Information, true);
 			Log.Write($"Supported: {isSupported}", 2, null);
 
+			//Tries to open the database
 			try
 			{
 				var secure = new SecureString();
@@ -77,7 +95,7 @@ namespace FoodPlanner
 		}
 
 		/// <summary>
-		/// Closes the log file.
+		/// Closes the log file and database and saves the current language to a config file.
 		/// </summary>
 		private void App_OnExit(object sender, ExitEventArgs e)
 		{
@@ -86,6 +104,10 @@ namespace FoodPlanner
 			Log.Close();
 		}
 
+		/// <summary>
+		/// Saves the specified language to a config file.
+		/// </summary>
+		/// <param name="language">The language to save to a file.</param>
 		private void SaveLanguageToFile(CultureInfo language)
 		{
 			Directory.CreateDirectory("config");
@@ -96,6 +118,10 @@ namespace FoodPlanner
 			writer.WriteLine(language.ToString());
 		}
 
+		/// <summary>
+		/// Loads and returns a language that was saved to a config file.
+		/// </summary>
+		/// <returns>The language that was loaded from a file.</returns>
 		private CultureInfo LoadLanguageFromFile()
 		{
 			using var stream = new FileStream(@"config\language.txt", FileMode.Open, FileAccess.Read, FileShare.Read);
@@ -106,6 +132,11 @@ namespace FoodPlanner
 			return languageStr != null ? new CultureInfo(languageStr) : null;
 		}
 
+		/// <summary>
+		/// Wrapper method to execute and log a SQL query.
+		/// </summary>
+		/// <param name="query">The query that should be executed.</param>
+		/// <returns>The query results.</returns>
 		public static async Task<QueryResult> ExecuteQuery(string query)
 		{
 			QueryResult queryRes = await _accessDB.ExecuteQuery(query);
