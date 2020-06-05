@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -12,6 +13,10 @@ namespace FoodPlanner.Pages
 	/// </summary>
 	public partial class WeekPlanPage : Page
 	{
+		private int[] _currRecipes;
+
+		private int[] _currRecipesDistinct;
+
 		public WeekPlanPage()
 		{
 			InitializeComponent();
@@ -26,12 +31,13 @@ namespace FoodPlanner.Pages
 
 			QueryResult currWeekPlan = await App.ExecuteQuery("select Wochentag, IDRezepte from Wochenplan");
 
-			int[] distinctIds = currWeekPlan.ReturnedRows.Select(a => (int)a[1]).Distinct().ToArray();
+			_currRecipes = currWeekPlan.ReturnedRows.Select(a => (int)a[1]).ToArray();
+			_currRecipesDistinct = _currRecipes.Distinct().ToArray();
 
-			string currRecipesQuery = $"select ID, Gerichtname from Rezepte where ID = {distinctIds[0]}";
-			for(int i = 1; i < distinctIds.Length; i++)
+			string currRecipesQuery = $"select ID, Gerichtname from Rezepte where ID = {_currRecipesDistinct[0]}";
+			for(int i = 1; i < _currRecipesDistinct.Length; i++)
 			{
-				currRecipesQuery += $" or ID = {distinctIds[i]}";
+				currRecipesQuery += $" or ID = {_currRecipesDistinct[i]}";
 			}
 			QueryResult currRecipes = await App.ExecuteQuery(currRecipesQuery);
 			
@@ -69,6 +75,31 @@ namespace FoodPlanner.Pages
 			DataContext = currWeekPlanObj;
 
 			IsEnabled = true;
+		}
+
+		private async void GenerateShoppingList(object sender, RoutedEventArgs e)
+		{
+			string allIngredsQuery =
+				$"select Rezepte_ID, Zutat, Menge from ZusammenfassungRezeptzutatenliste where Rezepte_ID = {_currRecipesDistinct[0]}";
+			for(int i = 1; i < _currRecipesDistinct.Length; i++)
+			{
+				allIngredsQuery += $" or Rezepte_ID = {_currRecipesDistinct[i]}";
+			}
+
+			QueryResult allIngreds = await App.ExecuteQuery(allIngredsQuery);
+
+			await using var stream = new FileStream("shoppinglist.txt", FileMode.Create, FileAccess.Write, FileShare.Read);
+			await using var writer = new StreamWriter(stream);
+
+			await writer.WriteLineAsync($"- Shopping list for {_currRecipesDistinct.Length} recipes -");
+
+			for(int i = 0; i < allIngreds.ReturnedRows.Count; i++)
+			{
+				await writer.WriteLineAsync($"[] {allIngreds.ReturnedRows[i][2]} {allIngreds.ReturnedRows[i][1]} " +
+				                            $"(x{_currRecipes.Count(a => a.Equals((int)allIngreds.ReturnedRows[i][0]))})");
+			}
+
+			MessageBox.Show("Finished");
 		}
 	}
 }
