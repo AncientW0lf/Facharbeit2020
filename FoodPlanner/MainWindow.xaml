@@ -20,7 +20,7 @@
             <Frame Background="#eee" Padding="5" Source="Pages/RecipesPage.xaml" NavigationUIVisibility="Hidden"/>
         </TabItem>
         <TabItem Header="{x:Static lang:Resources.WeekPlanSimple}">
-            <!--<Frame Background="#eee" Padding="5" Source="Pages/WeekPlanPage.xaml" NavigationUIVisibility="Hidden"/>-->
+            <Frame Background="#eee" Padding="5" Source="Pages/WeekPlanPage.xaml" NavigationUIVisibility="Hidden"/>
         </TabItem>
         <TabItem Header="{x:Static lang:Resources.OptionsSimple}">
             <Frame Background="#eee" Padding="5" Source="Pages/OptionsPage.xaml" NavigationUIVisibility="Hidden"/>
