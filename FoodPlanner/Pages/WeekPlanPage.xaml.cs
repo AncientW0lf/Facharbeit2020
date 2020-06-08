@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
@@ -17,6 +18,9 @@ namespace FoodPlanner.Pages
 
 		private int[] _currRecipesDistinct;
 
+		private static readonly Random Rng = new Random();
+
+		//TODO: Add ability to manually edit week plan items
 		public WeekPlanPage()
 		{
 			InitializeComponent();
@@ -80,7 +84,8 @@ namespace FoodPlanner.Pages
 		private async void GenerateShoppingList(object sender, RoutedEventArgs e)
 		{
 			string allIngredsQuery =
-				$"select Rezepte_ID, Zutat, Menge from ZusammenfassungRezeptzutatenliste where Rezepte_ID = {_currRecipesDistinct[0]}";
+				$"select Rezepte_ID, Zutat, Menge from ZusammenfassungRezeptzutatenliste " +
+				$"where Rezepte_ID = {_currRecipesDistinct[0]}";
 			for(int i = 1; i < _currRecipesDistinct.Length; i++)
 			{
 				allIngredsQuery += $" or Rezepte_ID = {_currRecipesDistinct[i]}";
@@ -100,6 +105,38 @@ namespace FoodPlanner.Pages
 			}
 
 			MessageBox.Show("Finished");
+		}
+
+		private async void ShuffleWeekPlan(object sender, RoutedEventArgs e)
+		{
+			int[] allRecipes = (await App.ExecuteQuery("select ID from Rezepte"))
+				.ReturnedRows.Select(a => (int)a[0]).ToArray();
+
+			var shuffledItems = new int[7];
+			for(int i = 0; i < shuffledItems.Length; i++)
+			{
+				shuffledItems[i] = allRecipes[Rng.Next(0, allRecipes.Length)];
+			}
+
+			var queries = new Task[7];
+			queries[0] = Task.Factory.StartNew(async() => 
+				await App.ExecuteQuery($"update Wochenplan set IDRezepte = {shuffledItems[0]} where Wochentag = 'Montag'"));
+			queries[1] = Task.Factory.StartNew(async() => 
+				await App.ExecuteQuery($"update Wochenplan set IDRezepte = {shuffledItems[1]} where Wochentag = 'Dienstag'"));
+			queries[2] = Task.Factory.StartNew(async() => 
+				await App.ExecuteQuery($"update Wochenplan set IDRezepte = {shuffledItems[2]} where Wochentag = 'Mittwoch'"));
+			queries[3] = Task.Factory.StartNew(async() => 
+				await App.ExecuteQuery($"update Wochenplan set IDRezepte = {shuffledItems[3]} where Wochentag = 'Donnerstag'"));
+			queries[4] = Task.Factory.StartNew(async() => 
+				await App.ExecuteQuery($"update Wochenplan set IDRezepte = {shuffledItems[4]} where Wochentag = 'Freitag'"));
+			queries[5] = Task.Factory.StartNew(async() => 
+				await App.ExecuteQuery($"update Wochenplan set IDRezepte = {shuffledItems[5]} where Wochentag = 'Samstag'"));
+			queries[6] = Task.Factory.StartNew(async() => 
+				await App.ExecuteQuery($"update Wochenplan set IDRezepte = {shuffledItems[6]} where Wochentag = 'Sonntag'"));
+
+			Task.WaitAll(queries);
+
+			NavigationService?.Refresh();
 		}
 	}
 }
