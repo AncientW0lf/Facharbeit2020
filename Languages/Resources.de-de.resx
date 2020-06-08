@@ -244,4 +244,28 @@ Betroffene Zeilen: $3</value>
   <data name="MsgIngredientUpdatedWithErrors" xml:space="preserve">
     <value>Die Zutat konnte nicht bearbeitet werden. Bitte editiere die Datenbank manuell wenn das Problem bestehen bleibt.</value>
   </data>
+  <data name="IngredSearch" xml:space="preserve">
+    <value>Suchen:</value>
+  </data>
+  <data name="IngredAdd" xml:space="preserve">
+    <value>Neue Zutat hinzufügen</value>
+  </data>
+  <data name="IngredEdit" xml:space="preserve">
+    <value>Ausgewählte Zutat bearbeiten</value>
+  </data>
+  <data name="IngredRemove" xml:space="preserve">
+    <value>Ausgewählte Zutat(en) entfernen</value>
+  </data>
+  <data name="IngredNewSimple" xml:space="preserve">
+    <value>Neue Zutat</value>
+  </data>
+  <data name="MsgIngredPrompt" xml:space="preserve">
+    <value>Gib der neuen Zutat einen Namen:</value>
+  </data>
+  <data name="IngredUpdateSimple" xml:space="preserve">
+    <value>Zutat bearbeiten</value>
+  </data>
+  <data name="MsgIngredPrompt2" xml:space="preserve">
+    <value>Gib den neuen Namen deiner Zutat ein:</value>
+  </data>
 </root>

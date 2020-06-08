@@ -153,11 +153,65 @@ namespace Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add new ingredient.
+        /// </summary>
+        public static string IngredAdd {
+            get {
+                return ResourceManager.GetString("IngredAdd", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit selected ingredient.
+        /// </summary>
+        public static string IngredEdit {
+            get {
+                return ResourceManager.GetString("IngredEdit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Ingredients.
         /// </summary>
         public static string IngredientsSimple {
             get {
                 return ResourceManager.GetString("IngredientsSimple", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New ingredient.
+        /// </summary>
+        public static string IngredNewSimple {
+            get {
+                return ResourceManager.GetString("IngredNewSimple", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remove selected ingredient(s).
+        /// </summary>
+        public static string IngredRemove {
+            get {
+                return ResourceManager.GetString("IngredRemove", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Search:.
+        /// </summary>
+        public static string IngredSearch {
+            get {
+                return ResourceManager.GetString("IngredSearch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Update ingredient.
+        /// </summary>
+        public static string IngredUpdateSimple {
+            get {
+                return ResourceManager.GetString("IngredUpdateSimple", resourceCulture);
             }
         }
         
@@ -212,6 +266,24 @@ namespace Languages {
         public static string MsgIngredientUpdatedWithErrors {
             get {
                 return ResourceManager.GetString("MsgIngredientUpdatedWithErrors", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter the name of your new ingredient:.
+        /// </summary>
+        public static string MsgIngredPrompt {
+            get {
+                return ResourceManager.GetString("MsgIngredPrompt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter the new name of the ingredient:.
+        /// </summary>
+        public static string MsgIngredPrompt2 {
+            get {
+                return ResourceManager.GetString("MsgIngredPrompt2", resourceCulture);
             }
         }
         

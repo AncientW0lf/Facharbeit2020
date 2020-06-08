@@ -116,6 +116,22 @@ namespace FoodPlanner.Pages
 		}
 
 		/// <summary>
+		/// Inserts a new ingredient into the database and refreshes the page afterwards.
+		/// </summary>
+		private async void EditIngredient(object sender, RoutedEventArgs e)
+		{
+			var selected = (IngredientInfo)LBoxIngreds.SelectedItem;
+
+			await SqlHelper.UpdateIngredientInteractive(
+				selected.ID 
+				?? throw new ArgumentException($"ID of ingredient \"{selected.Name}\" not present!"), 
+				selected.Name, 
+				true);
+
+			NavigationService?.Refresh();
+		}
+
+		/// <summary>
 		/// Removes all selected ingredients in the database and refreshes the page afterwards.
 		/// </summary>
 		private async void RemoveIngredient(object sender, RoutedEventArgs e)

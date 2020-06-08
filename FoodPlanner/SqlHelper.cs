@@ -251,7 +251,10 @@ namespace FoodPlanner
 		public static async Task<QueryResult?> InsertNewIngredientInteractive(bool msgFinished)
 		{
 			//Opens a new window to ask for the ingredient name
-			var win = new StringInputWin("New ingredient", "Enter the name of your new ingredient:", "New ingredient")
+			var win = new StringInputWin(
+				Languages.Resources.IngredNewSimple, 
+				Languages.Resources.MsgIngredPrompt, 
+				Languages.Resources.IngredNewSimple)
 			{
 				Owner = App.CurrWindow
 			};
@@ -313,7 +316,10 @@ namespace FoodPlanner
 		public static async Task<QueryResult?> UpdateIngredientInteractive(int ingredientId, string oldName, bool msgFinished)
 		{
 			//Opens a new window to ask the user of the updated ingredient name
-			var win = new StringInputWin("Update ingredient", "Enter the new name of the ingredient:", oldName)
+			var win = new StringInputWin(
+				Languages.Resources.IngredUpdateSimple, 
+				Languages.Resources.MsgIngredPrompt2,
+				oldName)
 			{
 				Owner = App.CurrWindow
 			};

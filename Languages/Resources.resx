@@ -266,4 +266,34 @@ Affected rows: $3</value>
     <value>Ingredient could not be fully updated! Please edit the database manually if this problem persists.</value>
     <comment>Used after updating an ingredient and at least one query fails.</comment>
   </data>
+  <data name="IngredSearch" xml:space="preserve">
+    <value>Search:</value>
+    <comment>Used in the ingredient page.</comment>
+  </data>
+  <data name="IngredAdd" xml:space="preserve">
+    <value>Add new ingredient</value>
+    <comment>Used in the ingredient page.</comment>
+  </data>
+  <data name="IngredEdit" xml:space="preserve">
+    <value>Edit selected ingredient</value>
+    <comment>Used in the ingredient page.</comment>
+  </data>
+  <data name="IngredRemove" xml:space="preserve">
+    <value>Remove selected ingredient(s)</value>
+    <comment>Used in the ingredient page.</comment>
+  </data>
+  <data name="IngredNewSimple" xml:space="preserve">
+    <value>New ingredient</value>
+  </data>
+  <data name="MsgIngredPrompt" xml:space="preserve">
+    <value>Enter the name of your new ingredient:</value>
+    <comment>Used when creating a new ingredient.</comment>
+  </data>
+  <data name="IngredUpdateSimple" xml:space="preserve">
+    <value>Update ingredient</value>
+  </data>
+  <data name="MsgIngredPrompt2" xml:space="preserve">
+    <value>Enter the new name of the ingredient:</value>
+    <comment>Used when updating a ingredient.</comment>
+  </data>
 </root>
