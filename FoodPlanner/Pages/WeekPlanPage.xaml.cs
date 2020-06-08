@@ -95,7 +95,7 @@ namespace FoodPlanner.Pages
 
 			for(int i = 0; i < allIngreds.ReturnedRows.Count; i++)
 			{
-				await writer.WriteLineAsync($"[] {allIngreds.ReturnedRows[i][2]} {allIngreds.ReturnedRows[i][1]} " +
+				await writer.WriteLineAsync($"☐ {allIngreds.ReturnedRows[i][2]} {allIngreds.ReturnedRows[i][1]} " +
 				                            $"(x{_currRecipes.Count(a => a.Equals((int)allIngreds.ReturnedRows[i][0]))})");
 			}
 
