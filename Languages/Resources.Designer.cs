@@ -346,6 +346,16 @@ namespace Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Gathered all ingredients! The shopping list can be found here:
+        ///$1.
+        /// </summary>
+        public static string MsgWeekPlanGen {
+            get {
+                return ResourceManager.GetString("MsgWeekPlanGen", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Name.
         /// </summary>
         public static string NameSimple {
@@ -468,6 +478,15 @@ namespace Languages {
         public static string SaveRecipeSimple {
             get {
                 return ResourceManager.GetString("SaveRecipeSimple", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to - Shopping list for $1 recipe(s) -.
+        /// </summary>
+        public static string ShoppingListTitle {
+            get {
+                return ResourceManager.GetString("ShoppingListTitle", resourceCulture);
             }
         }
         

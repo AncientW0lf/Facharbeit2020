@@ -96,7 +96,8 @@ namespace FoodPlanner.Pages
 			await using var stream = new FileStream("shoppinglist.txt", FileMode.Create, FileAccess.Write, FileShare.Read);
 			await using var writer = new StreamWriter(stream);
 
-			await writer.WriteLineAsync($"- Shopping list for {_currRecipesDistinct.Length} recipes -");
+			await writer.WriteLineAsync(
+				Languages.Resources.ShoppingListTitle.Replace("$1", _currRecipesDistinct.Length.ToString()));
 
 			for(int i = 0; i < allIngreds.ReturnedRows.Count; i++)
 			{
@@ -104,7 +105,8 @@ namespace FoodPlanner.Pages
 				                            $"(x{_currRecipes.Count(a => a.Equals((int)allIngreds.ReturnedRows[i][0]))})");
 			}
 
-			MessageBox.Show("Finished");
+			MessageBox.Show(Languages.Resources.MsgWeekPlanGen.Replace("$1", stream.Name),
+				Languages.Resources.SuccessSimple, MessageBoxButton.OK, MessageBoxImage.Information);
 		}
 
 		private async void ShuffleWeekPlan(object sender, RoutedEventArgs e)

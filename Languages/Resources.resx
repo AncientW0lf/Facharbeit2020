@@ -319,8 +319,19 @@ Affected rows: $3</value>
   </data>
   <data name="WeekPlanShuffle" xml:space="preserve">
     <value>Shuffle week plan</value>
+    <comment>Used in the week plan page</comment>
   </data>
   <data name="WeekPlanGenerate" xml:space="preserve">
     <value>Generate shopping list</value>
+    <comment>Used in the week plan page</comment>
+  </data>
+  <data name="MsgWeekPlanGen" xml:space="preserve">
+    <value>Gathered all ingredients! The shopping list can be found here:
+$1</value>
+    <comment>Used when generating a new shopping list</comment>
+  </data>
+  <data name="ShoppingListTitle" xml:space="preserve">
+    <value>- Shopping list for $1 recipe(s) -</value>
+    <comment>Used in the shopping list file</comment>
   </data>
 </root>

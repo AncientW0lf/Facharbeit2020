@@ -295,4 +295,11 @@ Betroffene Zeilen: $3</value>
   <data name="WeekPlanGenerate" xml:space="preserve">
     <value>Einkaufsliste generieren</value>
   </data>
+  <data name="MsgWeekPlanGen" xml:space="preserve">
+    <value>Es wurden alle Zutaten zusammengefasst! Die Einkaufsliste kann hier gefunden werden:
+$1</value>
+  </data>
+  <data name="ShoppingListTitle" xml:space="preserve">
+    <value>- Einkaufsliste für $1 Rezept(e) -</value>
+  </data>
 </root>
