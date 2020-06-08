@@ -144,6 +144,15 @@ namespace Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Friday.
+        /// </summary>
+        public static string FridaySimple {
+            get {
+                return ResourceManager.GetString("FridaySimple", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Info.
         /// </summary>
         public static string InfoSimple {
@@ -221,6 +230,15 @@ namespace Languages {
         public static string LinkedIngreds {
             get {
                 return ResourceManager.GetString("LinkedIngreds", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Monday.
+        /// </summary>
+        public static string MondaySimple {
+            get {
+                return ResourceManager.GetString("MondaySimple", resourceCulture);
             }
         }
         
@@ -436,6 +454,15 @@ namespace Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Saturday.
+        /// </summary>
+        public static string SaturdaySimple {
+            get {
+                return ResourceManager.GetString("SaturdaySimple", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Save recipe.
         /// </summary>
         public static string SaveRecipeSimple {
@@ -450,6 +477,60 @@ namespace Languages {
         public static string SuccessSimple {
             get {
                 return ResourceManager.GetString("SuccessSimple", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sunday.
+        /// </summary>
+        public static string SundaySimple {
+            get {
+                return ResourceManager.GetString("SundaySimple", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Thursday.
+        /// </summary>
+        public static string ThursdaySimple {
+            get {
+                return ResourceManager.GetString("ThursdaySimple", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tuesday.
+        /// </summary>
+        public static string TuesdaySimple {
+            get {
+                return ResourceManager.GetString("TuesdaySimple", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wednesday.
+        /// </summary>
+        public static string WednesdaySimple {
+            get {
+                return ResourceManager.GetString("WednesdaySimple", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Generate shopping list.
+        /// </summary>
+        public static string WeekPlanGenerate {
+            get {
+                return ResourceManager.GetString("WeekPlanGenerate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Shuffle week plan.
+        /// </summary>
+        public static string WeekPlanShuffle {
+            get {
+                return ResourceManager.GetString("WeekPlanShuffle", resourceCulture);
             }
         }
         

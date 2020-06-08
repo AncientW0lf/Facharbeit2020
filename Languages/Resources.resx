@@ -296,4 +296,31 @@ Affected rows: $3</value>
     <value>Enter the new name of the ingredient:</value>
     <comment>Used when updating a ingredient.</comment>
   </data>
+  <data name="MondaySimple" xml:space="preserve">
+    <value>Monday</value>
+  </data>
+  <data name="TuesdaySimple" xml:space="preserve">
+    <value>Tuesday</value>
+  </data>
+  <data name="WednesdaySimple" xml:space="preserve">
+    <value>Wednesday</value>
+  </data>
+  <data name="ThursdaySimple" xml:space="preserve">
+    <value>Thursday</value>
+  </data>
+  <data name="FridaySimple" xml:space="preserve">
+    <value>Friday</value>
+  </data>
+  <data name="SaturdaySimple" xml:space="preserve">
+    <value>Saturday</value>
+  </data>
+  <data name="SundaySimple" xml:space="preserve">
+    <value>Sunday</value>
+  </data>
+  <data name="WeekPlanShuffle" xml:space="preserve">
+    <value>Shuffle week plan</value>
+  </data>
+  <data name="WeekPlanGenerate" xml:space="preserve">
+    <value>Generate shopping list</value>
+  </data>
 </root>

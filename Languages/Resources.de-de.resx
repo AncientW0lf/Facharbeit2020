@@ -268,4 +268,31 @@ Betroffene Zeilen: $3</value>
   <data name="MsgIngredPrompt2" xml:space="preserve">
     <value>Gib den neuen Namen deiner Zutat ein:</value>
   </data>
+  <data name="MondaySimple" xml:space="preserve">
+    <value>Montag</value>
+  </data>
+  <data name="TuesdaySimple" xml:space="preserve">
+    <value>Dienstag</value>
+  </data>
+  <data name="WednesdaySimple" xml:space="preserve">
+    <value>Mittwoch</value>
+  </data>
+  <data name="ThursdaySimple" xml:space="preserve">
+    <value>Donnerstag</value>
+  </data>
+  <data name="FridaySimple" xml:space="preserve">
+    <value>Freitag</value>
+  </data>
+  <data name="SaturdaySimple" xml:space="preserve">
+    <value>Samstag</value>
+  </data>
+  <data name="SundaySimple" xml:space="preserve">
+    <value>Sonntag</value>
+  </data>
+  <data name="WeekPlanShuffle" xml:space="preserve">
+    <value>Wochenplan neu mischen</value>
+  </data>
+  <data name="WeekPlanGenerate" xml:space="preserve">
+    <value>Einkaufsliste generieren</value>
+  </data>
 </root>

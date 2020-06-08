@@ -33,25 +33,45 @@
                 </Grid.ColumnDefinitions>
 
                 <Border BorderBrush="Black" BorderThickness="1,1,0,0">
-                    <TextBlock Text="Monday:" Margin="0,0,5,0"/>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{x:Static lang:Resources.MondaySimple}"/>
+                        <TextBlock Text=":" Margin="0,0,5,0"/>
+                    </StackPanel>
                 </Border>
                 <Border BorderBrush="Black" BorderThickness="1,1,0,0" Grid.Row="1">
-                    <TextBlock Text="Tuesday:" Margin="0,0,5,0"/>
-                </Border>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{x:Static lang:Resources.TuesdaySimple}"/>
+                        <TextBlock Text=":" Margin="0,0,5,0"/>
+                    </StackPanel>                </Border>
                 <Border BorderBrush="Black" BorderThickness="1,1,0,0" Grid.Row="2">
-                    <TextBlock Text="Wednesday:" Margin="0,0,5,0"/>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{x:Static lang:Resources.WednesdaySimple}"/>
+                        <TextBlock Text=":" Margin="0,0,5,0"/>
+                    </StackPanel>
                 </Border>
                 <Border BorderBrush="Black" BorderThickness="1,1,0,0" Grid.Row="3">
-                    <TextBlock Text="Thursday:" Margin="0,0,5,0"/>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{x:Static lang:Resources.ThursdaySimple}"/>
+                        <TextBlock Text=":" Margin="0,0,5,0"/>
+                    </StackPanel>
                 </Border>
                 <Border BorderBrush="Black" BorderThickness="1,1,0,0" Grid.Row="4">
-                    <TextBlock Text="Friday:" Margin="0,0,5,0"/>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{x:Static lang:Resources.FridaySimple}"/>
+                        <TextBlock Text=":" Margin="0,0,5,0"/>
+                    </StackPanel>
                 </Border>
                 <Border BorderBrush="Black" BorderThickness="1,1,0,0" Grid.Row="5">
-                    <TextBlock Text="Saturday:" Margin="0,0,5,0"/>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{x:Static lang:Resources.SaturdaySimple}"/>
+                        <TextBlock Text=":" Margin="0,0,5,0"/>
+                    </StackPanel>
                 </Border>
                 <Border BorderBrush="Black" BorderThickness="1,1,0,1" Grid.Row="6">
-                    <TextBlock Text="Sunday:" Margin="0,0,5,0"/>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{x:Static lang:Resources.SundaySimple}"/>
+                        <TextBlock Text=":" Margin="0,0,5,0"/>
+                    </StackPanel>
                 </Border>
 
                 <Border BorderBrush="Black" BorderThickness="0,1,1,0" Grid.Column="1">
@@ -79,8 +99,8 @@
         </Viewbox>
 
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="1" Margin="0,10,0,0">
-            <Button Content="Generate shopping list" Click="GenerateShoppingList" Margin="5,0"/>
-            <Button Content="Shuffle week plan" Margin="5,0" Click="ShuffleWeekPlan"/>
+            <Button Content="{x:Static lang:Resources.WeekPlanGenerate}" Click="GenerateShoppingList" Margin="5,0"/>
+            <Button Content="{x:Static lang:Resources.WeekPlanShuffle}" Margin="5,0" Click="ShuffleWeekPlan"/>
         </StackPanel>
     </Grid>
 </Page>
