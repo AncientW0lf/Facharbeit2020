@@ -140,8 +140,11 @@ namespace FoodPlanner
 		public static async Task<QueryResult> ExecuteQuery(string query)
 		{
 			QueryResult queryRes = await _accessDB.ExecuteQuery(query);
-			Log.Write("Executed SQL query:", 1, TraceEventType.Information, true);
-			Log.Write($"Query: {queryRes.ExecutedQuery}\nSuccess: {queryRes.Success}", 2, null);
+			lock(DBPassword)
+			{
+				Log.Write("Executed SQL query:", 1, TraceEventType.Information, true);
+				Log.Write($"Query: {queryRes.ExecutedQuery}\nSuccess: {queryRes.Success}", 2, null);
+			}
 
 			return queryRes;
 		}
