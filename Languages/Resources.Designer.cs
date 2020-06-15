@@ -464,6 +464,15 @@ namespace Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Remove selected ingredient(s).
+        /// </summary>
+        public static string RemoveLinkedIngreds {
+            get {
+                return ResourceManager.GetString("RemoveLinkedIngreds", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Saturday.
         /// </summary>
         public static string SaturdaySimple {

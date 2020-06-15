@@ -302,4 +302,7 @@ $1</value>
   <data name="ShoppingListTitle" xml:space="preserve">
     <value>- Einkaufsliste für $1 Rezept(e) -</value>
   </data>
+  <data name="RemoveLinkedIngreds" xml:space="preserve">
+    <value>Ausgewählte Zutat(en) entfernen</value>
+  </data>
 </root>

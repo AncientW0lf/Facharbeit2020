@@ -334,4 +334,7 @@ $1</value>
     <value>- Shopping list for $1 recipe(s) -</value>
     <comment>Used in the shopping list file</comment>
   </data>
+  <data name="RemoveLinkedIngreds" xml:space="preserve">
+    <value>Remove selected ingredient(s)</value>
+  </data>
 </root>

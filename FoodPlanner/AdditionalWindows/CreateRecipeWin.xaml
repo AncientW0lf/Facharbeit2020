@@ -60,7 +60,7 @@
                 </DataGrid.Columns>
 				<DataGrid.ContextMenu>
 					<ContextMenu>
-                        <MenuItem Header="Remove selected ingredient(s)" Click="RemoveLinkedIngredient"/>
+                        <MenuItem Header="{x:Static lang:Resources.RemoveLinkedIngreds}" Click="RemoveLinkedIngredient"/>
                     </ContextMenu>
                 </DataGrid.ContextMenu>
             </DataGrid>
