@@ -243,6 +243,15 @@ namespace Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to More recipes:.
+        /// </summary>
+        public static string MoreRecipes {
+            get {
+                return ResourceManager.GetString("MoreRecipes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Changed language. Please restart the application for the changes to take effect..
         /// </summary>
         public static string MsgChangedLang {

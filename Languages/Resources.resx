@@ -337,4 +337,7 @@ $1</value>
   <data name="RemoveLinkedIngreds" xml:space="preserve">
     <value>Remove selected ingredient(s)</value>
   </data>
+  <data name="MoreRecipes" xml:space="preserve">
+    <value>More recipes:</value>
+  </data>
 </root>

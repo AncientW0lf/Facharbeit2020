@@ -305,4 +305,7 @@ $1</value>
   <data name="RemoveLinkedIngreds" xml:space="preserve">
     <value>Ausgewählte Zutat(en) entfernen</value>
   </data>
+  <data name="MoreRecipes" xml:space="preserve">
+    <value>Mehr Rezepte:</value>
+  </data>
 </root>

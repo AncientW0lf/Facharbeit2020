@@ -1,6 +1,8 @@
 ﻿using AccessCommunication;
 using FoodPlanner.SQLObj;
+using System.Diagnostics;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -153,6 +155,58 @@ namespace FoodPlanner.Pages
 
 			//Refreshes the page
 			NavigationService?.Refresh();
+		}
+
+		private void OpenWebsite(object sender, RoutedEventArgs e)
+		{
+			string url;
+
+			switch(((Button)sender).Content)
+			{
+				case "Chefkoch":
+					url = "https://chefkoch.de/rezepte";
+					break;
+				case "Lecker":
+					url = "https://lecker.de/rezepte";
+					break;
+				case "Allrecipes":
+					url = "https://allrecipes.com/recipes";
+					break;
+				case "BBC Food":
+					url = "https://bbc.co.uk/food/recipes";
+					break;
+				case "Jamie Oliver":
+					url = "https://jamieoliver.com/recipes";
+					break;
+				default:
+					return;
+			}
+			
+			try
+			{
+				Process.Start(url);
+			}
+			catch
+			{
+				// hack because of this: https://github.com/dotnet/corefx/issues/10361
+				if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+				{
+					url = url.Replace("&", "^&");
+					Process.Start(new ProcessStartInfo("cmd", $"/c start {url}") { CreateNoWindow = true });
+				}
+				else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+				{
+					Process.Start("xdg-open", url);
+				}
+				else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+				{
+					Process.Start("open", url);
+				}
+				else
+				{
+					throw;
+				}
+			}
 		}
 	}
 }
